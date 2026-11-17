@@ -39,7 +39,8 @@ export const TRACKING_IDS = {
   googleAds: import.meta.env.VITE_GOOGLE_ADS_ID as string | undefined,
   googleAdsLeadLabel: import.meta.env.VITE_GOOGLE_ADS_LEAD_LABEL as string | undefined,
   googleAdsContactLabel: import.meta.env.VITE_GOOGLE_ADS_CONTACT_LABEL as string | undefined,
-  metaPixel: import.meta.env.VITE_META_PIXEL_ID as string | undefined,
+  // ID público do Meta Pixel da LEXA Go. VITE_META_PIXEL_ID na Vercel substitui, se necessário.
+  metaPixel: (import.meta.env.VITE_META_PIXEL_ID as string | undefined) || "2542404786282497",
 };
 
 export const hasTrackingConfigured = () =>
@@ -172,6 +173,8 @@ export function loadMarketingTags() {
     fbq!.loaded = true;
     fbq!.version = "2.0";
     fbq!.push = fbq;
+    // O PageView de navegação interna é enviado por trackPageView; evita duplicar.
+    (fbq as unknown as { disablePushState: boolean }).disablePushState = true;
     window.fbq = fbq;
     window._fbq = fbq;
     injectScript("https://connect.facebook.net/en_US/fbevents.js");
