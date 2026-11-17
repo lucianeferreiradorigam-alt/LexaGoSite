@@ -72,6 +72,8 @@ export type Service = {
   cta: string;
   whatsappMessage: string;
   related: ServiceKey[];
+  /** Prova real de experiência ligada ao serviço. */
+  proof?: { numero: string; texto: string };
   /** Página de campanha correspondente (anúncios). */
   landing: {
     path: string;
@@ -477,6 +479,7 @@ export const SERVICES: Record<ServiceKey, Service> = {
     ],
     cta: "Quero converter meu livro em e-book",
     whatsappMessage: "Olá! Quero converter meu livro em e-book.",
+    proof: { numero: "+2.000", texto: "e-books produzidos pela LEXA Go para o catálogo do CEDET." },
     related: ["comercializacao", "projetos-editoriais", "amazon-ads"],
     landing: {
       path: "/lp/conversao-de-ebooks",

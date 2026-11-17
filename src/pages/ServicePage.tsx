@@ -117,6 +117,12 @@ const ServicePage = ({ service }: { service: Service }) => {
                 <li key={n} className="border-l-2 border-accent pl-3 font-serif text-lg leading-snug">“{n}”</li>
               ))}
             </ul>
+            {service.proof && (
+              <p className="mt-5 border-t border-border pt-4">
+                <span className="block font-serif text-4xl text-accent">{service.proof.numero}</span>
+                <span className="text-sm text-foreground/80">{service.proof.texto}</span>
+              </p>
+            )}
           </aside>
         </Container>
       </section>

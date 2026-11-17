@@ -25,6 +25,11 @@ export const PARTNERS = [
 export const SHOW_CLIENTS = true;
 export const CLIENTS = ["CEDET", "CNBB", "GEMA Editora", "Valete", "Intelítera", "Vida & Consciência"];
 
+/** Provas de experiência confirmadas pela LEXA Go. */
+export const PROOFS = [
+  { numero: "+2.000", texto: "e-books produzidos pela LEXA Go para o catálogo do CEDET." },
+];
+
 /**
  * Depoimentos e resultados: deixe vazio até haver material aprovado e verificável.
  * Formato: { texto, autor, cargo, empresa }.

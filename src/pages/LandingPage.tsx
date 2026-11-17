@@ -38,6 +38,12 @@ const LandingPage = ({ services }: { services: ServiceKey[] }) => {
               <h1 className="text-4xl leading-[1.08] md:text-5xl">{lp.h1}</h1>
               <p className="mt-5 text-lg leading-relaxed text-foreground/80">{lp.lead}</p>
               <CheckList items={lp.bullets} className="mt-6 text-lg" />
+              {main.proof && (
+                <p className="mt-6 flex items-baseline gap-3">
+                  <span className="font-serif text-4xl text-accent">{main.proof.numero}</span>
+                  <span className="text-foreground/80">{main.proof.texto}</span>
+                </p>
+              )}
               <div className="mt-8 hidden lg:block">
                 <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Para quem é</p>
                 <ul className="mt-3 space-y-3">

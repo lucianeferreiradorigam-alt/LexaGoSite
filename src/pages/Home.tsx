@@ -176,9 +176,15 @@ const Home = () => {
       <section aria-labelledby="ebooks" className="py-16 md:py-20">
         <Container className="grid gap-8 rounded-lg border border-border p-6 md:grid-cols-[1.2fr_1fr] md:p-10">
           <div>
-            <Eyebrow>Novo serviço</Eyebrow>
+            <Eyebrow>Conversão em e-book</Eyebrow>
             <h2 id="ebooks" className="text-3xl md:text-4xl">{ebooks.h1}</h2>
             <p className="mt-4 text-lg leading-relaxed text-foreground/80">{ebooks.lead}</p>
+            {ebooks.proof && (
+              <p className="mt-4 flex items-baseline gap-3">
+                <span className="font-serif text-3xl text-accent">{ebooks.proof.numero}</span>
+                <span className="text-foreground/80">{ebooks.proof.texto}</span>
+              </p>
+            )}
             <Link to={ebooks.path} className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
               Quero converter meu livro em e-book <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>

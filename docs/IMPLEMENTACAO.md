@@ -5,7 +5,7 @@
 - O site deixou de ser uma página única e passou a ter páginas próprias por serviço, páginas de campanha, área de conteúdos, sobre, contato e privacidade.
 - Posicionamento atualizado: "Da ideia ao mercado: desenvolvimento editorial e estratégia comercial para livros".
 - Apresentação das sócias com o texto do complemento (Luciane Dorigam e Joyce Fabris, mais de 20 anos de experiência no mercado editorial e livreiro).
-- Removidas afirmações sem comprovação que existiam nos dados ocultos de SEO e no `llms.txt` ("mais de 2.000 e-books", "R$ 7 bilhões", "sem investimento inicial", "foundingDate 2024").
+- Mantido "mais de 2.000 e-books produzidos para o CEDET" (confirmado), agora visível nas páginas de e-book. Removidas afirmações não confirmadas dos dados ocultos de SEO ("R$ 7 bilhões", "sem investimento inicial", "foundingDate 2024").
 - Nova tipografia (Fraunces nos títulos, Source Sans 3 no texto, servidas pelo próprio site), terracota da marca escurecido para contraste adequado, fotos otimizadas (de 2,4 MB para 35 KB).
 
 ## 2. Páginas
@@ -63,10 +63,15 @@ Não há promessa de posição nos resultados de busca.
 
 ## 6. Pendências que dependem de você
 
-1. **Destino dos leads:** escolher a ferramenta (e-mail via Resend, planilha Google, RD Station, HubSpot, Pipedrive etc.) e cadastrar as variáveis na Vercel (ver `.env.example`).
+1. **Destino dos leads (e-mail para luciane@ e joyce@lexagobr.com, via Resend):**
+   1. Criar conta gratuita em resend.com.
+   2. Em Domains, adicionar `lexagobr.com` e criar no DNS do domínio os registros que o Resend mostrar (TXT/MX de envio e DKIM). Aguardar o status "Verified".
+   3. Em API Keys, criar uma chave com permissão "Sending access".
+   4. Na Vercel (projeto lexa-go-site > Settings > Environment Variables), criar `RESEND_API_KEY` com a chave, para Production e Preview, e fazer novo deploy.
+   Destinatários e remetente (`site@lexagobr.com`) já estão definidos no código; as variáveis `LEAD_EMAIL_TO` e `LEAD_EMAIL_FROM` só servem para alterar esse padrão.
 2. **IDs de mensuração:** GA4, Google Ads (ID e rótulos de conversão) e Meta Pixel.
-3. **Clientes:** confirmar se a lista atual (CEDET, CNBB, GEMA Editora, Valete, Intelítera, Vida & Consciência) segue aprovada.
-4. **Provas de experiência:** depoimentos e resultados verificáveis, se houver (os números em rascunho do site anterior não foram publicados).
+3. **Clientes:** lista atual aprovada e mantida.
+4. **Resultados de clientes:** enviar os resultados aprovados para publicação (entram em `src/content/company.ts`).
 5. **Perfis oficiais** (Instagram, LinkedIn) para os links e dados estruturados.
 6. **Revisão dos 4 artigos iniciais** em `content/conteudos/`.
 7. **Search Console:** depois de publicar, enviar `https://www.lexagobr.com/sitemap.xml`.

@@ -6,8 +6,9 @@
  *                      Zapier, n8n, RD Station, HubSpot etc.).
  *   LEAD_WEBHOOK_TOKEN (opcional) enviado no cabeçalho Authorization: Bearer.
  *   RESEND_API_KEY     (opcional) envia o lead por e-mail via Resend.
- *   LEAD_EMAIL_TO      e-mail(s) que recebem a notificação, separados por vírgula.
- *   LEAD_EMAIL_FROM    remetente verificado no Resend, ex.: "Site LEXA Go <site@lexagobr.com>".
+ *   LEAD_EMAIL_TO      (opcional) destinatários separados por vírgula. Padrão: as duas sócias.
+ *   LEAD_EMAIL_FROM    (opcional) remetente em domínio verificado no Resend.
+ *                      Padrão: "Site LEXA Go <site@lexagobr.com>".
  *
  * Só responde sucesso quando ao menos um destino confirmou o recebimento.
  * Sem destino configurado, responde 503 e o site informa que a mensagem não foi enviada.
@@ -24,6 +25,8 @@ const SERVICES = new Set([
   "comercializacao",
   "outro",
 ]);
+
+const DEFAULT_EMAIL_TO = "luciane@lexagobr.com,joyce@lexagobr.com";
 
 const str = (v: unknown, max = 300) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 
@@ -77,7 +80,7 @@ export async function POST(request: Request) {
 
   const webhook = process.env.LEAD_WEBHOOK_URL;
   const resendKey = process.env.RESEND_API_KEY;
-  const emailTo = process.env.LEAD_EMAIL_TO;
+  const emailTo = process.env.LEAD_EMAIL_TO || DEFAULT_EMAIL_TO;
   if (!webhook && !(resendKey && emailTo)) {
     console.error("[lead] nenhum destino configurado", { id: lead.id, servico: lead.servico });
     return json(503, { ok: false, error: "not_configured" });
@@ -129,7 +132,7 @@ export async function POST(request: Request) {
         method: "POST",
         headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },
         body: JSON.stringify({
-          from: process.env.LEAD_EMAIL_FROM || "Site LEXA Go <onboarding@resend.dev>",
+          from: process.env.LEAD_EMAIL_FROM || "Site LEXA Go <site@lexagobr.com>",
           to: emailTo.split(",").map((s) => s.trim()),
           reply_to: lead.email,
           subject: `Novo contato: ${lead.nome} (${lead.servico})`,
