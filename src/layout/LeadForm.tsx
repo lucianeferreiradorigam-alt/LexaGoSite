@@ -89,7 +89,7 @@ const LeadForm = ({ service, submitLabel = "Enviar", title, compact }: Props) =>
 
   if (status.state === "success") {
     return (
-      <div role="status" className="rounded-lg border border-accent/30 bg-background p-6">
+      <div role="status" className="rounded-2xl border border-accent/30 bg-background p-6">
         <CheckCircle2 className="h-8 w-8 text-accent" aria-hidden />
         <p className="mt-3 text-xl font-semibold">Recebemos sua mensagem.</p>
         <p className="mt-2 text-muted-foreground">
@@ -110,7 +110,7 @@ const LeadForm = ({ service, submitLabel = "Enviar", title, compact }: Props) =>
     errors[name] ? { "aria-invalid": true, "aria-describedby": `${id}-${name}-erro` } : {};
 
   return (
-    <form noValidate onSubmit={onSubmit} className="rounded-lg border border-border bg-background p-5 shadow-sm sm:p-6" aria-labelledby={title ? `${id}-titulo` : undefined}>
+    <form noValidate onSubmit={onSubmit} className="rounded-2xl border border-border bg-background p-5 shadow-sm sm:p-6" aria-labelledby={title ? `${id}-titulo` : undefined}>
       {title && (
         <h2 id={`${id}-titulo`} className="mb-1 text-2xl">
           {title}
@@ -207,7 +207,7 @@ const LeadForm = ({ service, submitLabel = "Enviar", title, compact }: Props) =>
       <button
         type="submit"
         disabled={status.state === "sending"}
-        className="mt-6 inline-flex w-full items-center justify-center rounded-md bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition-colors hover:bg-accent/90 disabled:opacity-60 sm:w-auto"
+        className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition-colors hover:bg-accent/90 disabled:opacity-60 sm:w-auto"
       >
         {status.state === "sending" ? "Enviando..." : submitLabel}
       </button>

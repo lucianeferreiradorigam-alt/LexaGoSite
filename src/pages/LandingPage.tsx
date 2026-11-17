@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Info } from "lucide-react";
 import logo from "@/assets/logo-header.png";
 import { SERVICES, type ServiceKey } from "@/content/services";
+import { IconTile, SERVICE_ICONS, SERVICE_TONES } from "@/layout/ServiceIcon";
 import Faq from "@/layout/Faq";
 import LeadForm from "@/layout/LeadForm";
 import { WhatsAppLink } from "@/layout/ContactLinks";
@@ -34,7 +35,8 @@ const LandingPage = ({ services }: { services: ServiceKey[] }) => {
         <section className="bg-warm">
           <Container className="grid gap-10 py-10 md:py-14 lg:grid-cols-[1.1fr_1fr] lg:items-start">
             <div className="lg:pt-6">
-              <Eyebrow>{isCombined ? "Para editoras" : main.eyebrow}</Eyebrow>
+              <IconTile icon={SERVICE_ICONS[main.key]} tone={SERVICE_TONES[main.key]} size="lg" />
+              <Eyebrow className="mt-5">{isCombined ? "Para editoras" : main.eyebrow}</Eyebrow>
               <h1 className="text-4xl leading-[1.08] md:text-5xl">{lp.h1}</h1>
               <p className="mt-5 text-lg leading-relaxed text-foreground/80">{lp.lead}</p>
               <CheckList items={lp.bullets} className="mt-6 text-lg" />
@@ -80,7 +82,7 @@ const LandingPage = ({ services }: { services: ServiceKey[] }) => {
                 {deliver?.kind === "steps" && (
                   <ol className="mt-8 grid gap-4 md:grid-cols-5">
                     {deliver.steps.map((st, i) => (
-                      <li key={st.title} className="rounded-lg border border-border p-4">
+                      <li key={st.title} className="rounded-2xl border border-border p-4">
                         <span className="font-serif text-2xl text-accent">{i + 1}</span>
                         <p className="mt-1 font-semibold leading-snug">{st.title}</p>
                         <p className="mt-2 text-sm text-muted-foreground">{st.items.slice(0, 3).join(" ")}</p>
@@ -126,7 +128,7 @@ const LandingPage = ({ services }: { services: ServiceKey[] }) => {
           <Container>
             <Faq items={all.flatMap((s) => s.faq).slice(0, 6)} />
             <div className="mx-auto mt-10 flex max-w-3xl flex-col gap-3 sm:flex-row">
-              <a href="#formulario" className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
+              <a href="#formulario" className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
                 {main.cta}
               </a>
               <WhatsAppLink variant="button" message={main.whatsappMessage} service={main.key} />

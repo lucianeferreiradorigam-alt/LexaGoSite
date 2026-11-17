@@ -48,7 +48,7 @@ const Header = () => {
         <div className="flex items-center gap-2">
           <Link
             to="/contato"
-            className="hidden rounded-md bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90 sm:inline-flex"
+            className="hidden rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90 sm:inline-flex"
           >
             Conversar sobre meu projeto
           </Link>

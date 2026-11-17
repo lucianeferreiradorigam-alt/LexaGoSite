@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import heroImg from "@/assets/hero-books.webp";
+import { ArrowRight, Feather, Handshake, LayoutGrid, Megaphone, PenLine, Store, TabletSmartphone, TrendingUp, type LucideIcon } from "lucide-react";
+import { IconTile, SERVICE_ICONS, SERVICE_TONES, type Tone } from "@/layout/ServiceIcon";
+import HeroVisual from "@/layout/HeroVisual";
 import lucianeImg from "@/assets/luciane.webp";
 import joyceImg from "@/assets/joyce.webp";
 import { GENERAL_FAQ, SERVICES } from "@/content/services";
@@ -10,14 +11,15 @@ import LeadForm from "@/layout/LeadForm";
 import { WhatsAppLink } from "@/layout/ContactLinks";
 import { CheckList, Container, Eyebrow } from "@/layout/Section";
 
-const PATHS = [
-  { need: "Quero escrever um livro", hint: "Ou tenho um original e quero transformá-lo em livro.", to: SERVICES["projetos-editoriais"].path },
-  { need: "Preciso de alguém para escrever meu livro", hint: "Ghostwriting a partir das suas ideias e materiais.", to: `${SERVICES["projetos-editoriais"].path}#ghostwriting` },
-  { need: "Quero vender meu livro", hint: "Canais, metadados, preço e operação comercial.", to: SERVICES.comercializacao.path },
-  { need: "Como divulgar meu livro na Amazon?", hint: "Gestão de Amazon Ads para autores e editoras.", to: SERVICES["amazon-ads"].path },
-  { need: "Quero ampliar as vendas da minha editora", hint: "Consultoria e gestão comercial.", to: SERVICES["consultoria-comercial"].path },
-  { need: "Procuro representação comercial para livros", hint: "Canais, compradores e negociação.", to: SERVICES["representacao-comercial"].path },
-  { need: "Quero converter meu livro em e-book", hint: "Word, PDF ou InDesign para EPUB.", to: SERVICES.ebooks.path },
+const PATHS: { need: string; hint: string; to: string; icon: LucideIcon; tone: Tone }[] = [
+  { need: "Quero escrever um livro", hint: "Da ideia ou do original ao livro pronto.", to: SERVICES["projetos-editoriais"].path, icon: PenLine, tone: "indigo" },
+  { need: "Preciso de alguém para escrever meu livro", hint: "Ghostwriting com a sua voz.", to: `${SERVICES["projetos-editoriais"].path}#ghostwriting`, icon: Feather, tone: "blue" },
+  { need: "Quero vender meu livro", hint: "Canais, preço e operação de vendas.", to: SERVICES.comercializacao.path, icon: Store, tone: "pink" },
+  { need: "Quero anunciar na Amazon", hint: "Gestão de Amazon Ads para livros.", to: SERVICES["amazon-ads"].path, icon: Megaphone, tone: "orange" },
+  { need: "Quero ampliar as vendas da minha editora", hint: "Consultoria e gestão comercial.", to: SERVICES["consultoria-comercial"].path, icon: TrendingUp, tone: "green" },
+  { need: "Procuro representação comercial", hint: "Canais, compradores e negociação.", to: SERVICES["representacao-comercial"].path, icon: Handshake, tone: "purple" },
+  { need: "Quero converter meu livro em e-book", hint: "Word, PDF ou InDesign para EPUB.", to: SERVICES.ebooks.path, icon: TabletSmartphone, tone: "teal" },
+  { need: "Ver todos os serviços", hint: "Editoras, autores e empresas.", to: "/servicos", icon: LayoutGrid, tone: "blue" },
 ];
 
 const HOW = [
@@ -41,65 +43,52 @@ const Home = () => {
 
   return (
     <>
-      {/* 1. Abertura */}
-      <section className="relative overflow-hidden border-b border-border bg-warm">
-        <img
-          src={heroImg}
-          alt=""
-          aria-hidden
-          width={1600}
-          height={900}
-          {...{ fetchpriority: "high" }}
-          className="absolute inset-y-0 right-0 hidden h-full w-[45%] object-cover opacity-90 lg:block"
-        />
-        <div className="absolute inset-y-0 right-0 hidden w-[45%] bg-gradient-to-r from-warm to-transparent lg:block" aria-hidden />
-        <Container className="relative py-16 md:py-24 lg:py-28">
-          <div className="max-w-2xl">
+      {/* 1. Abertura (compacta, para os serviços aparecerem sem rolar) */}
+      <section className="bg-background">
+        <Container className="grid items-center gap-8 pb-7 pt-6 md:pt-14 lg:grid-cols-[1.15fr_1fr] lg:gap-12 lg:pb-10">
+          <div>
             <Eyebrow>Consultoria editorial e comercial</Eyebrow>
-            <h1 className="text-[2.15rem] leading-[1.06] sm:text-5xl md:text-6xl">
+            <h1 className="text-[1.85rem] leading-[1.1] sm:text-5xl lg:text-[3.25rem]">
               Da ideia ao mercado: desenvolvimento editorial e estratégia comercial para livros
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/80 md:text-xl">
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-lg">
               A LEXA Go conecta produção editorial, canais de venda e gestão comercial para apoiar editoras, autores e
               empresas em cada etapa do livro.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a href="#contato" className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
+            <div className="mt-6 flex flex-col gap-2.5 sm:mt-7 sm:flex-row sm:gap-3">
+              <a href="#contato" className="inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 font-semibold text-accent-foreground transition-colors hover:bg-accent/90">
                 Conversar sobre meu projeto
               </a>
-              <WhatsAppLink variant="button" message="Olá! Quero conversar sobre meu projeto." />
+              <WhatsAppLink variant="button" className="rounded-full" message="Olá! Quero conversar sobre meu projeto." />
             </div>
+          </div>
+          <div className="hidden sm:block">
+            <HeroVisual />
           </div>
         </Container>
       </section>
 
       {/* 2. Escolha do caminho */}
-      <section aria-labelledby="caminhos" className="py-16 md:py-24">
+      <section aria-labelledby="caminhos" className="bg-warm pb-16 pt-10 md:pb-20">
         <Container>
-          <Eyebrow>Por onde começar</Eyebrow>
-          <h2 id="caminhos" className="max-w-2xl text-3xl md:text-4xl">Qual destas frases parece com a sua?</h2>
-          <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
-            Escolha a sua situação e veja como podemos ajudar. Atendemos o projeto completo ou apenas a etapa de que você
-            precisa.
-          </p>
-          <ul className="mt-10 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          <h2 id="caminhos" className="text-2xl md:text-3xl">Como podemos ajudar?</h2>
+          <p className="mt-2 text-muted-foreground">Escolha a frase que mais parece com a sua.</p>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {PATHS.map((p) => (
-              <li key={p.need} className="bg-background">
-                <Link to={p.to} className="group flex h-full flex-col justify-between gap-3 p-6 transition-colors hover:bg-warm">
-                  <span className="font-serif text-xl leading-snug group-hover:text-accent">“{p.need}”</span>
-                  <span className="flex items-end justify-between gap-3 text-sm text-muted-foreground">
+              <li key={p.need}>
+                <Link
+                  to={p.to}
+                  className="group flex h-full flex-col gap-4 rounded-2xl bg-background p-5 shadow-sm ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                >
+                  <IconTile icon={p.icon} tone={p.tone} />
+                  <span className="text-lg font-semibold leading-snug tracking-tight">{p.need}</span>
+                  <span className="mt-auto flex items-end justify-between gap-3 text-sm text-muted-foreground">
                     {p.hint}
-                    <ArrowRight className="h-5 w-5 shrink-0 text-accent transition-transform group-hover:translate-x-1" aria-hidden />
+                    <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform group-hover:translate-x-1" aria-hidden />
                   </span>
                 </Link>
               </li>
             ))}
-            <li className="bg-background">
-              <Link to="/servicos" className="group flex h-full flex-col justify-between gap-3 p-6 hover:bg-warm">
-                <span className="font-serif text-xl leading-snug group-hover:text-accent">Ver todos os serviços</span>
-                <ArrowRight className="h-5 w-5 text-accent" aria-hidden />
-              </Link>
-            </li>
           </ul>
         </Container>
       </section>
@@ -117,7 +106,7 @@ const Home = () => {
           {steps?.kind === "steps" && (
             <ol className="mt-12 grid gap-4 md:grid-cols-5">
               {steps.steps.map((s, i) => (
-                <li key={s.title} className={`rounded-lg border p-5 ${i === 4 ? "border-accent bg-background" : "border-border bg-background/70"}`}>
+                <li key={s.title} className={`rounded-2xl border p-5 ${i === 4 ? "border-accent bg-background" : "border-border bg-background/70"}`}>
                   <span className="font-serif text-3xl text-accent">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="mt-2 text-lg font-semibold leading-snug">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.items.slice(0, 3).join(" ")}</p>
@@ -129,10 +118,10 @@ const Home = () => {
             Além de ajudar a produzir seu livro, podemos cuidar da estratégia e da operação para levá-lo ao mercado.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Link to={editorial.path} className="inline-flex items-center justify-center gap-2 rounded-md bg-foreground px-6 py-3.5 font-semibold text-background hover:bg-foreground/90">
+            <Link to={editorial.path} className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 font-semibold text-background hover:bg-foreground/90">
               Conhecer as cinco etapas <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
-            <Link to="/contato?assunto=projetos-editoriais" className="inline-flex items-center justify-center rounded-md border border-foreground/25 px-6 py-3.5 font-semibold hover:border-accent hover:text-accent">
+            <Link to="/contato?assunto=projetos-editoriais" className="inline-flex items-center justify-center rounded-full border border-foreground/25 px-6 py-3.5 font-semibold hover:border-accent hover:text-accent">
               Quero desenvolver meu livro
             </Link>
           </div>
@@ -150,12 +139,12 @@ const Home = () => {
               e autores que querem divulgar seus livros, ampliar a visibilidade e trabalhar as vendas dentro da plataforma.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to={ads.path} className="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
+              <Link to={ads.path} className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
                 Quero anunciar meus livros <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </div>
           </div>
-          <div className="rounded-lg border border-white/15 p-6 md:p-8">
+          <div className="rounded-2xl border border-white/15 p-6 md:p-8">
             <p className="text-sm font-semibold uppercase tracking-wider opacity-70">Na gestão de Amazon Ads</p>
             <div className="mt-4 [&_svg]:text-[hsl(var(--accent-light))]">
               <CheckList
@@ -174,9 +163,10 @@ const Home = () => {
 
       {/* E-books */}
       <section aria-labelledby="ebooks" className="py-16 md:py-20">
-        <Container className="grid gap-8 rounded-lg border border-border p-6 md:grid-cols-[1.2fr_1fr] md:p-10">
+        <Container className="grid gap-8 rounded-2xl border border-border p-6 md:grid-cols-[1.2fr_1fr] md:p-10">
           <div>
-            <Eyebrow>Conversão em e-book</Eyebrow>
+            <IconTile icon={SERVICE_ICONS.ebooks} tone="teal" size="lg" />
+            <Eyebrow className="mt-5">Conversão em e-book</Eyebrow>
             <h2 id="ebooks" className="text-3xl md:text-4xl">{ebooks.h1}</h2>
             <p className="mt-4 text-lg leading-relaxed text-foreground/80">{ebooks.lead}</p>
             {ebooks.proof && (
@@ -185,7 +175,7 @@ const Home = () => {
                 <span className="text-foreground/80">{ebooks.proof.texto}</span>
               </p>
             )}
-            <Link to={ebooks.path} className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
+            <Link to={ebooks.path} className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
               Quero converter meu livro em e-book <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>
@@ -213,8 +203,9 @@ const Home = () => {
             {OTHER.map((o) => {
               const s = SERVICES[o.key];
               return (
-                <Link key={o.key} to={s.path} className="group rounded-lg border border-border bg-background p-6 transition-colors hover:border-accent">
-                  <h3 className="text-xl font-semibold group-hover:text-accent">{s.name}</h3>
+                <Link key={o.key} to={s.path} className="group rounded-2xl bg-background p-6 shadow-sm ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:shadow-lg">
+                  <IconTile icon={SERVICE_ICONS[o.key]} tone={SERVICE_TONES[o.key]} />
+                  <h3 className="mt-4 text-xl font-semibold group-hover:text-accent">{s.name}</h3>
                   <p className="mt-2 leading-relaxed text-muted-foreground">{o.text}</p>
                   <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent">
                     Saiba mais <ArrowRight className="h-4 w-4" aria-hidden />
@@ -280,7 +271,7 @@ const Home = () => {
             <h2 id="clientes" className="text-2xl md:text-3xl">Alguns de nossos clientes</h2>
             <ul className="mt-6 flex flex-wrap gap-3">
               {CLIENTS.map((c) => (
-                <li key={c} className="rounded-md border border-border px-4 py-2.5 font-semibold text-foreground/80">{c}</li>
+                <li key={c} className="rounded-full bg-warm px-4 py-2 font-semibold text-foreground/80">{c}</li>
               ))}
             </ul>
           </Container>

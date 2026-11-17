@@ -4,38 +4,38 @@
 
 @layer base {
   :root {
-    --background: 40 33% 98%;
-    --foreground: 30 12% 13%;
+    /* Visual limpo: branco, cinzas neutros, texto quase preto e azul como cor de ação */
+    --background: 0 0% 100%;
+    --foreground: 240 3% 11%;
 
-    --card: 40 25% 96%;
-    --card-foreground: 30 12% 13%;
-    --popover: 40 33% 98%;
-    --popover-foreground: 30 12% 13%;
+    --card: 240 11% 97%;
+    --card-foreground: 240 3% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 3% 11%;
 
-    --primary: 30 12% 13%;
-    --primary-foreground: 40 33% 98%;
-    --secondary: 35 20% 90%;
-    --secondary-foreground: 30 10% 25%;
+    --primary: 240 3% 11%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 11% 96%;
+    --secondary-foreground: 240 3% 11%;
 
-    --muted: 35 18% 92%;
-    --muted-foreground: 30 8% 36%;
+    --muted: 240 11% 96%;
+    --muted-foreground: 240 2% 42%;
 
-    /* Terracota da marca, escurecido para contraste AA com texto branco */
-    --accent: 22 68% 38%;
+    --accent: 211 100% 42%;
     --accent-foreground: 0 0% 100%;
-    --accent-light: 24 75% 64%;
+    --accent-light: 211 100% 64%;
 
-    --destructive: 0 70% 42%;
+    --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 16% 85%;
-    --input: 35 12% 72%;
-    --ring: 22 68% 38%;
-    --radius: 0.5rem;
+    --border: 240 6% 89%;
+    --input: 240 5% 78%;
+    --ring: 211 100% 42%;
+    --radius: 0.75rem;
 
-    --surface-warm: 38 33% 94%;
-    --surface-dark: 28 14% 11%;
-    --text-on-dark: 40 20% 92%;
+    --surface-warm: 240 11% 97%;
+    --surface-dark: 240 3% 7%;
+    --text-on-dark: 0 0% 96%;
   }
 }
 
@@ -51,6 +51,7 @@
   body {
     @apply bg-background font-sans text-foreground antialiased;
     font-size: 17px;
+    font-feature-settings: "cv11", "ss01";
   }
 
   h1,
@@ -61,8 +62,8 @@
 
   h1,
   h2 {
-    @apply font-serif font-normal tracking-tight;
-    font-variation-settings: "opsz" 72;
+    @apply font-semibold;
+    letter-spacing: -0.025em;
   }
 
   p {

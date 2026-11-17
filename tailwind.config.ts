@@ -61,8 +61,8 @@ export default {
         dark: "hsl(var(--surface-dark))",
       },
       fontFamily: {
-        sans: ['"Source Sans 3 Variable"', "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
-        serif: ['"Fraunces Variable"', "Georgia", "serif"],
+        sans: ['"Inter Variable"', "-apple-system", "BlinkMacSystemFont", "Segoe UI", "system-ui", "sans-serif"],
+        serif: ['"Inter Variable"', "-apple-system", "BlinkMacSystemFont", "Segoe UI", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

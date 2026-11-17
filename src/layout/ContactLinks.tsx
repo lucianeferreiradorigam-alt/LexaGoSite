@@ -13,9 +13,9 @@ type Props = {
 export const WhatsAppLink = ({ message, service, label = "Falar pelo WhatsApp", variant = "link", className = "" }: Props) => {
   const styles = {
     button:
-      "inline-flex items-center justify-center gap-2 rounded-md border border-foreground/20 bg-background px-5 py-3 font-semibold text-foreground transition-colors hover:border-accent hover:text-accent",
+      "inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 bg-background px-5 py-3 font-semibold text-foreground transition-colors hover:border-accent hover:text-accent",
     inverse:
-      "inline-flex items-center justify-center gap-2 rounded-md border border-white/30 px-5 py-3 font-semibold text-white transition-colors hover:bg-white/10",
+      "inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-5 py-3 font-semibold text-white transition-colors hover:bg-white/10",
     link: "inline-flex items-center gap-2 font-semibold text-accent underline-offset-4 hover:underline",
   }[variant];
   return (

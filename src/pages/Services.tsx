@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { OTHER_FRONTS, SERVICES, SERVICE_ORDER, GENERAL_FAQ } from "@/content/services";
+import { IconTile, SERVICE_ICONS, SERVICE_TONES } from "@/layout/ServiceIcon";
 import Breadcrumbs from "@/layout/Breadcrumbs";
 import Faq from "@/layout/Faq";
 import { CheckList, Container, Eyebrow } from "@/layout/Section";
@@ -26,8 +27,9 @@ const Services = () => (
             const s = SERVICES[k];
             return (
               <li key={k}>
-                <Link to={s.path} className="group flex h-full flex-col rounded-lg border border-border p-6 transition-colors hover:border-accent md:p-8">
-                  <span className="text-sm font-semibold uppercase tracking-wider text-accent">{s.eyebrow}</span>
+                <Link to={s.path} className="group flex h-full flex-col rounded-2xl border border-border p-6 transition-colors hover:border-accent md:p-8">
+                  <IconTile icon={SERVICE_ICONS[k]} tone={SERVICE_TONES[k]} size="lg" />
+                  <span className="mt-5 text-sm font-semibold text-accent">{s.eyebrow}</span>
                   <h2 className="mt-2 text-2xl group-hover:text-accent md:text-3xl">{s.name}</h2>
                   <p className="mt-3 leading-relaxed text-muted-foreground">{s.seoDescription}</p>
                   <p className="mt-4 text-sm italic text-foreground/70">“{s.needs[0]}”</p>
@@ -68,7 +70,7 @@ const Services = () => (
       <Container>
         <Faq items={GENERAL_FAQ} />
         <div className="mx-auto mt-10 max-w-3xl">
-          <Link to="/contato" className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
+          <Link to="/contato" className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
             Conversar sobre meu projeto
           </Link>
         </div>

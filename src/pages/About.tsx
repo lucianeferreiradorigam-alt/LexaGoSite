@@ -80,7 +80,7 @@ const About = () => (
           <h2 id="clientes" className="text-2xl md:text-3xl">Alguns de nossos clientes</h2>
           <ul className="mt-6 flex flex-wrap gap-3">
             {CLIENTS.map((c) => (
-              <li key={c} className="rounded-md border border-border px-4 py-2.5 font-semibold text-foreground/80">{c}</li>
+              <li key={c} className="rounded-full bg-warm px-4 py-2 font-semibold text-foreground/80">{c}</li>
             ))}
           </ul>
         </Container>
@@ -90,7 +90,7 @@ const About = () => (
     <section className="border-t border-border py-16">
       <Container className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
         <h2 className="text-2xl md:text-3xl">Vamos conversar sobre o seu projeto?</h2>
-        <Link to="/contato" className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
+        <Link to="/contato" className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
           Conversar sobre meu projeto
         </Link>
       </Container>

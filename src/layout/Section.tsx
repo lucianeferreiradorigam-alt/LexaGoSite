@@ -5,7 +5,7 @@ export const Container = ({ children, className = "" }: { children: ReactNode; c
 );
 
 export const Eyebrow = ({ children, className = "" }: { children: ReactNode; className?: string }) => (
-  <p className={`mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-accent ${className}`}>{children}</p>
+  <p className={`mb-3 text-[15px] font-semibold text-accent ${className}`}>{children}</p>
 );
 
 export const Check = () => (

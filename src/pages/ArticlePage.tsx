@@ -30,13 +30,13 @@ const ArticlePage = ({ article }: { article: Article }) => {
       </header>
 
       <Container className="max-w-3xl py-12">
-        <div className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:font-normal prose-a:text-accent" dangerouslySetInnerHTML={{ __html: article.html }} />
+        <div className="prose prose-lg max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-accent" dangerouslySetInnerHTML={{ __html: article.html }} />
 
-        <aside aria-label="Serviço relacionado" className="mt-12 rounded-lg bg-dark p-6 text-[hsl(var(--text-on-dark))] md:p-8">
+        <aside aria-label="Serviço relacionado" className="mt-12 rounded-2xl bg-dark p-6 text-[hsl(var(--text-on-dark))] md:p-8">
           <p className="text-sm font-semibold uppercase tracking-wider opacity-70">Serviço relacionado</p>
           <p className="mt-2 font-serif text-2xl text-white">{service.name}</p>
           <p className="mt-2 opacity-85">{service.seoDescription}</p>
-          <Link to={service.path} className="mt-5 inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 font-semibold text-accent-foreground hover:bg-accent/90">
+          <Link to={service.path} className="mt-5 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 font-semibold text-accent-foreground hover:bg-accent/90">
             {article.cta || service.cta} <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </aside>

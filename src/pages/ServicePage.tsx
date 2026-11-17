@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Info } from "lucide-react";
 import { SERVICES, type Section, type Service } from "@/content/services";
 import { PUBLISHED_ARTICLES } from "@/content/articles";
+import { IconTile, SERVICE_ICONS, SERVICE_TONES } from "@/layout/ServiceIcon";
 import Breadcrumbs from "@/layout/Breadcrumbs";
 import Faq from "@/layout/Faq";
 import LeadForm from "@/layout/LeadForm";
@@ -31,7 +32,7 @@ export const SectionBlock = ({ section, index }: { section: Section; index: numb
         {section.kind === "compare" && (
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {section.columns.map((c) => (
-              <div key={c.title} className="rounded-lg border border-border bg-background p-6">
+              <div key={c.title} className="rounded-2xl border border-border bg-background p-6">
                 <h3 className="text-xl font-semibold">{c.title}</h3>
                 <p className="mt-2 leading-relaxed text-muted-foreground">{c.text}</p>
               </div>
@@ -42,7 +43,7 @@ export const SectionBlock = ({ section, index }: { section: Section; index: numb
         {section.kind === "steps" && (
           <ol className="mt-10 space-y-6">
             {section.steps.map((s, i) => (
-              <li key={s.title} className="grid gap-4 rounded-lg border border-border bg-background p-6 md:grid-cols-[220px_1fr] md:gap-10 md:p-8">
+              <li key={s.title} className="grid gap-4 rounded-2xl border border-border bg-background p-6 md:grid-cols-[220px_1fr] md:gap-10 md:p-8">
                 <div>
                   <span className="font-serif text-4xl text-accent">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="mt-2 text-xl font-semibold leading-snug">{s.title}</h3>
@@ -76,8 +77,9 @@ export const RelatedServices = ({ keys, title = "Serviços relacionados" }: { ke
           const s = SERVICES[k];
           return (
             <li key={k}>
-              <Link to={s.path} className="group flex h-full flex-col rounded-lg border border-border p-5 transition-colors hover:border-accent">
-                <span className="text-lg font-semibold group-hover:text-accent">{s.shortName}</span>
+              <Link to={s.path} className="group flex h-full flex-col rounded-2xl border border-border p-5 transition-colors hover:border-accent">
+                <IconTile icon={SERVICE_ICONS[k]} tone={SERVICE_TONES[k]} />
+                <span className="mt-4 text-lg font-semibold group-hover:text-accent">{s.shortName}</span>
                 <span className="mt-1 text-sm text-muted-foreground">{s.needs[0]}</span>
                 <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent">
                   Ver serviço <ArrowRight className="h-4 w-4" aria-hidden />
@@ -100,21 +102,25 @@ const ServicePage = ({ service }: { service: Service }) => {
         <Container className="grid gap-10 py-12 md:py-16 lg:grid-cols-[1.4fr_1fr] lg:items-end">
           <div>
             <Breadcrumbs items={[{ name: "Início", path: "/" }, { name: "Serviços", path: "/servicos" }, { name: service.shortName, path: service.path }]} />
-            <Eyebrow className="mt-8">{service.eyebrow}</Eyebrow>
+            <div className="mt-8 flex items-center gap-3">
+              <IconTile icon={SERVICE_ICONS[service.key]} tone={SERVICE_TONES[service.key]} size="lg" />
+              <Eyebrow className="mb-0">{service.eyebrow}</Eyebrow>
+            </div>
+            <div className="mb-3" />
             <h1 className="text-4xl leading-[1.08] md:text-5xl lg:text-[3.4rem]">{service.h1}</h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-foreground/80 md:text-xl">{service.lead}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#contato" className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
+              <a href="#contato" className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
                 {service.cta}
               </a>
               <WhatsAppLink variant="button" message={service.whatsappMessage} service={service.key} />
             </div>
           </div>
-          <aside aria-label="Você está no lugar certo se" className="rounded-lg border border-border bg-background p-6">
+          <aside aria-label="Você está no lugar certo se" className="rounded-2xl border border-border bg-background p-6">
             <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Você está no lugar certo se pensa:</p>
             <ul className="mt-4 space-y-3">
               {service.needs.map((n) => (
-                <li key={n} className="border-l-2 border-accent pl-3 font-serif text-lg leading-snug">“{n}”</li>
+                <li key={n} className="border-l-2 border-accent pl-3 text-lg font-medium leading-snug">“{n}”</li>
               ))}
             </ul>
             {service.proof && (
@@ -148,7 +154,7 @@ const ServicePage = ({ service }: { service: Service }) => {
       {service.notes && (
         <section aria-labelledby="importante" className="py-12">
           <Container>
-            <div className="max-w-3xl rounded-lg border border-border p-6">
+            <div className="max-w-3xl rounded-2xl border border-border p-6">
               <h2 id="importante" className="flex items-center gap-2 text-xl font-semibold">
                 <Info className="h-5 w-5 text-accent" aria-hidden /> Bom saber
               </h2>

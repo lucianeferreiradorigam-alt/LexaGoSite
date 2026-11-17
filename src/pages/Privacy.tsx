@@ -6,7 +6,7 @@ const Privacy = () => (
   <Container className="max-w-3xl py-12 md:py-16">
     <Breadcrumbs items={[{ name: "Início", path: "/" }, { name: "Política de privacidade", path: "/privacidade" }]} />
     <h1 className="mt-8 text-4xl md:text-5xl">Política de privacidade</h1>
-    <div className="prose prose-lg mt-8 max-w-none prose-headings:font-serif prose-headings:font-normal">
+    <div className="prose prose-lg mt-8 max-w-none prose-headings:font-semibold prose-headings:tracking-tight">
       <p>
         Esta política explica como a LEXA Go trata os dados pessoais recebidos por meio deste site, em conformidade com a
         Lei Geral de Proteção de Dados (Lei 13.709/2018).
