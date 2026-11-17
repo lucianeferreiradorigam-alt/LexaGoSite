@@ -32,7 +32,8 @@ export type Attribution = Partial<Record<(typeof ATTR_PARAMS)[number], string>> 
 };
 
 export const TRACKING_IDS = {
-  ga4: import.meta.env.VITE_GA4_ID as string | undefined,
+  // ID público do GA4 da LEXA Go. VITE_GA4_ID na Vercel substitui, se necessário.
+  ga4: (import.meta.env.VITE_GA4_ID as string | undefined) || "G-943RQFF132",
   googleAds: import.meta.env.VITE_GOOGLE_ADS_ID as string | undefined,
   googleAdsLeadLabel: import.meta.env.VITE_GOOGLE_ADS_LEAD_LABEL as string | undefined,
   googleAdsContactLabel: import.meta.env.VITE_GOOGLE_ADS_CONTACT_LABEL as string | undefined,
@@ -183,9 +184,8 @@ export function trackPageView(path: string) {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: "page_view_virtual", page_path: path });
   if (!tagsLoaded) return;
-  if (window.gtag && TRACKING_IDS.ga4) {
-    window.gtag("event", "page_view", { page_path: path, page_location: window.location.href });
-  }
+  // GA4: as mudanças de página são medidas pela "medição otimizada" (histórico do navegador),
+  // ativa por padrão na propriedade. Não enviamos page_view manual para não duplicar.
   if (window.fbq) window.fbq("track", "PageView");
 }
 
