@@ -1,24 +1,18 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Container } from "@/layout/Section";
 
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
-      </div>
-    </div>
-  );
-};
+const NotFound = () => (
+  <section className="py-24">
+    <Container className="max-w-2xl">
+      <h1 className="text-4xl md:text-5xl">Página não encontrada</h1>
+      <p className="mt-4 text-lg text-muted-foreground">O endereço pode ter mudado. Veja onde podemos ajudar:</p>
+      <ul className="mt-6 space-y-2 text-lg">
+        <li><Link to="/" className="font-semibold text-accent hover:underline">Página inicial</Link></li>
+        <li><Link to="/servicos" className="font-semibold text-accent hover:underline">Serviços</Link></li>
+        <li><Link to="/contato" className="font-semibold text-accent hover:underline">Contato</Link></li>
+      </ul>
+    </Container>
+  </section>
+);
 
 export default NotFound;

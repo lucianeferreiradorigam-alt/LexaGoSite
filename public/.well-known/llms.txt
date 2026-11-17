@@ -1,31 +1,15 @@
-# Lexa Go - Aceleração de vendas para editoras
+# LEXA Go
 
-## Sobre
-A Lexa Go é uma empresa brasileira especializada em acelerar vendas de editoras nos principais canais do mercado editorial. Atuamos com estratégia, tecnologia e execução para livros físicos, e-books e audiobooks.
+> Consultoria para o mercado editorial brasileiro que conecta desenvolvimento de livros, estratégia comercial, canais de venda e publicidade na Amazon (Amazon Ads). Atende editoras, autores e empresas. Liderada por Luciane Dorigam e Joyce Fabris, sócias com mais de 20 anos de experiência no mercado editorial e livreiro.
 
 ## Serviços
-- Aceleração de vendas digitais: entrada e fortalecimento em grandes canais como Amazon e Mercado Livre
-- Gestão comercial completa: acompanhamento de performance e melhoria contínua
-- Conversão de catálogo físico em e-books
-- Produção de audiobooks sem investimento inicial da editora
-- Operação completa para pequenas e médias editoras (impressão, distribuição, vendas)
-- Reestruturação de operação editorial
-
-## Resultados
-- Mais de 2.000 e-books criados e publicados
-- Crescimento de vendas acima de dois dígitos em canais digitais e físicos
-- Apoio operacional completo para médias e pequenas editoras
-
-## Diferenciais
-- Autonomia e personalização para cada editora
-- Uso de dados, inteligência artificial e análise de mercado
-- Crescimento sustentável com visão de longo prazo
-- Execução conjunta do diagnóstico à entrega de resultados
-
-## Equipe
-- Luciane Dorigam: experiência sênior em vendas, marketing e negociação no mercado editorial
-- Joyce Fabris: especialista em e-commerce, operação e estratégia digital para editoras
+- [Projetos editoriais e ghostwriting](https://www.lexagobr.com/projetos-editoriais): da ideia ao mercado, em cinco etapas contratadas juntas ou por módulos.
+- [Amazon Ads: publicidade para livros na Amazon](https://www.lexagobr.com/amazon-ads-para-livros): gestão de campanhas para editoras e autores.
+- [Conversão de livros em e-book](https://www.lexagobr.com/conversao-de-livros-em-ebook): Word, PDF e arquivos de diagramação para EPUB, layout fluido ou fixo.
+- [Consultoria comercial para editoras](https://www.lexagobr.com/consultoria-comercial-para-editoras): diagnóstico, estratégia por título e canal, marketplaces, metadados e dados.
+- [Representação comercial de livros](https://www.lexagobr.com/representacao-comercial-de-livros): canais, compradores, negociação e acompanhamento. Não inclui agenciamento literário.
+- [Comercialização de livros](https://www.lexagobr.com/comercializacao-de-livros): para livros já publicados.
 
 ## Contato
-- Website: https://lexagobr.com
-- E-mail: luciane@lexagobr.com / joyce@lexagobr.com
+- [Contato](https://www.lexagobr.com/contato)
+- E-mail: luciane@lexagobr.com
