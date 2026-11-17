@@ -23,10 +23,29 @@ const Privacy = () => (
         Usamos esses dados apenas para responder ao seu contato, preparar uma proposta quando solicitada e melhorar a
         comunicação do site. Não vendemos nem compartilhamos seus dados para fins de marketing de terceiros.
       </p>
-      <h2>Cookies e ferramentas de medição</h2>
+      <h2>Cookies, medição e anúncios</h2>
       <p>
-        Quando ativadas, ferramentas como Google Analytics, Google Ads e Meta Pixel só são carregadas depois que você
-        aceita no aviso de cookies. Você pode recusar sem prejuízo para a navegação.
+        Usamos ferramentas de medição e publicidade somente depois que você aceita no aviso de cookies. Se você recusar,
+        elas não são carregadas e a navegação continua normal. Para mudar sua escolha, limpe os dados do site no navegador
+        e o aviso aparecerá de novo.
+      </p>
+      <ul>
+        <li>
+          <strong>Google Analytics e Google Ads:</strong> registram páginas visitadas, origem da visita e ações como cliques
+          em contato e envio de formulário, para medir o desempenho do site e dos anúncios.
+        </li>
+        <li>
+          <strong>Conversões otimizadas do Google:</strong> quando você envia o formulário e aceitou os cookies, o e-mail e o
+          telefone informados são compartilhados com o Google de forma criptografada (hash), para que o Google possa medir
+          se o contato veio de um anúncio. O Google não recebe esses dados em texto aberto.
+        </li>
+        <li>
+          <strong>Meta Pixel (Facebook e Instagram):</strong> coleta dados de navegação neste site para medir e direcionar
+          anúncios nas plataformas da Meta.
+        </li>
+      </ul>
+      <p>
+        Esses dados são tratados também segundo as políticas de privacidade do Google e da Meta.
       </p>
       <h2>Por quanto tempo guardamos</h2>
       <p>Mantemos os dados pelo tempo necessário para o atendimento e para obrigações legais.</p>

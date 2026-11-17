@@ -71,7 +71,7 @@ const LeadForm = ({ service, submitLabel = "Enviar", title, compact }: Props) =>
       const body = (await res.json().catch(() => ({}))) as { ok?: boolean; id?: string; error?: string };
       if (res.ok && body.ok) {
         setStatus({ state: "success" });
-        trackLead({ service: chosenService, lead_id: body.id });
+        trackLead({ service: chosenService, lead_id: body.id }, { email: data.email, phone: data.whatsapp });
         form.reset();
       } else {
         setStatus({

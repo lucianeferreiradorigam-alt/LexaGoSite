@@ -34,6 +34,8 @@ export type Attribution = Partial<Record<(typeof ATTR_PARAMS)[number], string>> 
 export const TRACKING_IDS = {
   // ID público do GA4 da LEXA Go. VITE_GA4_ID na Vercel substitui, se necessário.
   ga4: (import.meta.env.VITE_GA4_ID as string | undefined) || "G-943RQFF132",
+  // Google Ads (811-562-7607) está vinculado à mesma tag do Google (G-943RQFF132).
+  // Preencha VITE_GOOGLE_ADS_ID (AW-...) apenas se for usar conversões diretas do Ads.
   googleAds: import.meta.env.VITE_GOOGLE_ADS_ID as string | undefined,
   googleAdsLeadLabel: import.meta.env.VITE_GOOGLE_ADS_LEAD_LABEL as string | undefined,
   googleAdsContactLabel: import.meta.env.VITE_GOOGLE_ADS_CONTACT_LABEL as string | undefined,
@@ -155,7 +157,7 @@ export function loadMarketingTags() {
       ad_personalization: "granted",
     });
     window.gtag("js", new Date());
-    if (ga4) window.gtag("config", ga4);
+    if (ga4) window.gtag("config", ga4, { allow_enhanced_conversions: true });
     if (googleAds) window.gtag("config", googleAds);
     injectScript(`https://www.googletagmanager.com/gtag/js?id=${ga4 || googleAds}`);
   }
@@ -212,12 +214,32 @@ export function trackContactClick(method: "whatsapp" | "email", params: EventPar
   if (window.fbq) window.fbq("track", "Contact", { method });
 }
 
-/** Lead efetivamente recebido (resposta de sucesso do servidor). */
-export function trackLead(params: EventParams & { lead_id?: string }) {
+/** Telefone no formato E.164 exigido pelas conversões otimizadas (assume Brasil se faltar o DDI). */
+function toE164(phone?: string) {
+  const d = (phone || "").replace(/\D/g, "");
+  if (!d) return undefined;
+  if (d.startsWith("55") && d.length >= 12) return `+${d}`;
+  if (d.length === 10 || d.length === 11) return `+55${d}`;
+  return undefined;
+}
+
+/**
+ * Lead efetivamente recebido (resposta de sucesso do servidor).
+ * Com consentimento, envia e-mail e telefone ao Google como user_data para as conversões
+ * otimizadas; a própria tag do Google aplica hash (SHA-256) antes do envio.
+ */
+export function trackLead(params: EventParams & { lead_id?: string }, user?: { email?: string; phone?: string }) {
   const page = typeof window !== "undefined" ? window.location.pathname : undefined;
   const data = { page, ...params };
   pushEvent("generate_lead", data);
   if (!tagsLoaded) return;
+  if (window.gtag && user?.email) {
+    const phone = toE164(user.phone);
+    window.gtag("set", "user_data", {
+      email: user.email.trim().toLowerCase(),
+      ...(phone ? { phone_number: phone } : {}),
+    });
+  }
   if (window.gtag && TRACKING_IDS.ga4) window.gtag("event", "generate_lead", data);
   if (window.gtag && TRACKING_IDS.googleAds && TRACKING_IDS.googleAdsLeadLabel) {
     window.gtag("event", "conversion", {

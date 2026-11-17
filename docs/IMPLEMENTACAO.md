@@ -69,7 +69,7 @@ Não há promessa de posição nos resultados de busca.
    3. Em API Keys, criar uma chave com permissão "Sending access".
    4. Na Vercel (projeto lexa-go-site > Settings > Environment Variables), criar `RESEND_API_KEY` com a chave, para Production e Preview, e fazer novo deploy.
    Destinatários e remetente (`site@lexagobr.com`) já estão definidos no código; as variáveis `LEAD_EMAIL_TO` e `LEAD_EMAIL_FROM` só servem para alterar esse padrão.
-2. **IDs de mensuração:** GA4 configurado (G-943RQFF132). Faltam Google Ads (ID e rótulos de conversão) e Meta Pixel. No GA4, marcar o evento `generate_lead` como evento principal (conversão).
+2. **IDs de mensuração:** GA4 configurado (G-943RQFF132). Google Ads (811-562-7607) vinculado à mesma tag, com conversões otimizadas: o site envia e-mail e telefone (com hash feito pela tag) no `generate_lead`, só com consentimento. Falta o Meta Pixel. No GA4, marcar o evento `generate_lead` como evento principal (conversão).
 3. **Clientes:** lista atual aprovada e mantida.
 4. **Resultados de clientes:** enviar os resultados aprovados para publicação (entram em `src/content/company.ts`).
 5. **Perfis oficiais** (Instagram, LinkedIn) para os links e dados estruturados.
