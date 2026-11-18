@@ -11,9 +11,7 @@ import type { ServiceKey } from "./services";
 export const CATEGORIES = [
   { slug: "escrever-e-produzir-um-livro", name: "Escrever e produzir um livro" },
   { slug: "vender-e-distribuir-livros", name: "Vender e distribuir livros" },
-  { slug: "amazon-e-publicidade", name: "Amazon e publicidade" },
   { slug: "gestao-comercial-para-editoras", name: "Gestão comercial para editoras" },
-  { slug: "ebooks-e-audiobooks", name: "E-books e audiobooks" },
 ] as const;
 
 export type CategorySlug = (typeof CATEGORIES)[number]["slug"];

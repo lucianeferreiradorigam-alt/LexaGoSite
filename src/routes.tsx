@@ -34,9 +34,9 @@ export const ROUTES: AppRoute[] = [
     path: "/",
     element: <Home />,
     seo: {
-      title: "LEXA Go | Desenvolvimento editorial, consultoria comercial e Amazon Ads para livros",
+      title: "LEXA Go | Desenvolvimento editorial e estratégia comercial para livros",
       description:
-        "Da ideia ao mercado: a LEXA Go apoia editoras, autores e empresas no desenvolvimento de livros, ghostwriting, e-books, consultoria e representação comercial e Amazon Ads.",
+        "Da ideia ao mercado: a LEXA Go apoia editoras, autores e empresas no desenvolvimento de livros, ghostwriting, consultoria comercial, representação comercial e comercialização de livros.",
       jsonLd: [organizationSchema(), websiteSchema(), faqSchema(GENERAL_FAQ)],
     },
     sitemap: { priority: 1 },
@@ -47,7 +47,7 @@ export const ROUTES: AppRoute[] = [
     seo: {
       title: "Serviços editoriais e comerciais para livros | LEXA Go",
       description:
-        "Projetos editoriais, ghostwriting, conversão em e-book, consultoria comercial, representação comercial, comercialização de livros e Amazon Ads. Contrate o percurso completo ou uma etapa.",
+        "Projetos editoriais, ghostwriting, consultoria comercial, representação comercial e comercialização de livros. Contrate o percurso completo ou uma etapa.",
       breadcrumbs: [
         { name: "Início", path: "/" },
         { name: "Serviços", path: "/servicos" },
@@ -105,7 +105,7 @@ export const ROUTES: AppRoute[] = [
     element: <Contact />,
     seo: {
       title: "Contato | LEXA Go",
-      description: "Fale com a LEXA Go sobre o seu livro, a sua editora ou campanhas de Amazon Ads. Atendimento por formulário, e-mail e WhatsApp.",
+      description: "Fale com a LEXA Go sobre o seu livro ou a sua editora. Atendimento por formulário, e-mail e WhatsApp.",
       breadcrumbs: [
         { name: "Início", path: "/" },
         { name: "Contato", path: "/contato" },
@@ -119,7 +119,7 @@ export const ROUTES: AppRoute[] = [
     seo: {
       title: "Conteúdos sobre escrever, publicar e vender livros | LEXA Go",
       description:
-        "Artigos sobre como escrever e produzir um livro, vender e distribuir livros, Amazon Ads, gestão comercial para editoras, e-books e audiobooks.",
+        "Artigos sobre como escrever e produzir um livro, vender e distribuir livros e gestão comercial para editoras.",
       breadcrumbs: [
         { name: "Início", path: "/" },
         { name: "Conteúdos", path: "/conteudos" },

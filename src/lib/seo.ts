@@ -25,7 +25,7 @@ export const organizationSchema = () => ({
   logo: `${SITE_URL}/logo.png`,
   image: DEFAULT_OG_IMAGE,
   description:
-    "Consultoria para o mercado editorial que conecta desenvolvimento de livros, estratégia comercial, canais de venda e Amazon Ads para editoras, autores e empresas.",
+    "Consultoria para o mercado editorial que conecta desenvolvimento de livros, estratégia comercial e canais de venda para editoras, autores e empresas.",
   areaServed: "BR",
   email: CONTACT.emailGeneral,
   founder: CONTACT.partners.map((p) => ({ "@type": "Person", name: p.name })),

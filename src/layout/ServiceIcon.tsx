@@ -1,10 +1,8 @@
-import { BookOpenText, Feather, Handshake, Megaphone, PenLine, Store, TabletSmartphone, TrendingUp, type LucideIcon } from "lucide-react";
+import { BookOpenText, Feather, Handshake, PenLine, Store, TrendingUp, type LucideIcon } from "lucide-react";
 import type { ServiceKey } from "@/content/services";
 
 export const SERVICE_ICONS: Record<ServiceKey, LucideIcon> = {
   "projetos-editoriais": PenLine,
-  "amazon-ads": Megaphone,
-  ebooks: TabletSmartphone,
   "consultoria-comercial": TrendingUp,
   "representacao-comercial": Handshake,
   comercializacao: Store,
@@ -37,8 +35,6 @@ const TONES: Record<Tone, string> = {
 
 export const SERVICE_TONES: Record<ServiceKey, Tone> = {
   "projetos-editoriais": "indigo",
-  "amazon-ads": "orange",
-  ebooks: "teal",
   "consultoria-comercial": "green",
   "representacao-comercial": "purple",
   comercializacao: "pink",

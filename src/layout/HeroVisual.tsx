@@ -1,8 +1,8 @@
-import { BookOpenText, Megaphone, PenLine, Store, TabletSmartphone } from "lucide-react";
+import { BookOpenText, Handshake, PenLine, Store, TrendingUp } from "lucide-react";
 
 /**
- * Ilustração da abertura: a jornada do livro (escrita, livro impresso, e-book,
- * anúncios e canais de venda) em um painel escuro com brilho azul e roxo.
+ * Ilustração da abertura: a jornada do livro (escrita, livro impresso e digital,
+ * estratégia comercial e canais de venda) em um painel escuro com brilho azul e roxo.
  * Feita em HTML/CSS: leve, nítida em qualquer tela e sem imagens de terceiros.
  */
 const Chip = ({ icon: Icon, label, className, color }: { icon: typeof Store; label: string; className: string; color: string }) => (
@@ -17,7 +17,7 @@ const Chip = ({ icon: Icon, label, className, color }: { icon: typeof Store; lab
 const HeroVisual = () => (
   <div
     role="img"
-    aria-label="Ilustração da jornada do livro: escrita, livro impresso, e-book, Amazon Ads e canais de venda"
+    aria-label="Ilustração da jornada do livro: escrita, livro impresso e digital, estratégia comercial e canais de venda"
     className="relative h-[300px] overflow-hidden rounded-[2rem] bg-[#0b0b12] lg:h-[360px]"
   >
     <div className="absolute -left-16 -top-24 h-80 w-80 rounded-full bg-[#2997ff] opacity-50 blur-[90px]" aria-hidden />
@@ -37,7 +37,7 @@ const HeroVisual = () => (
       </div>
     </div>
 
-    {/* E-book (tablet) */}
+    {/* Livro digital (tablet) */}
     <div className="absolute left-[44%] top-1/2 h-[200px] w-[150px] -translate-y-[45%] rotate-6 rounded-[1.4rem] border-[6px] border-[#2c2c34] bg-white shadow-2xl shadow-black/50 lg:h-[230px] lg:w-[170px]">
       <div className="space-y-2 p-4">
         <div className="h-2 w-14 rounded-full bg-[#2997ff]" />
@@ -48,8 +48,8 @@ const HeroVisual = () => (
     </div>
 
     <Chip icon={PenLine} label="Escrita e edição" color="bg-[#5e5ce6]" className="left-5 top-5" />
-    <Chip icon={TabletSmartphone} label="E-book EPUB" color="bg-[#1a9bb8]" className="right-5 top-12 lg:top-14" />
-    <Chip icon={Megaphone} label="Amazon Ads" color="bg-[#f56300]" className="bottom-16 right-6 lg:bottom-20" />
+    <Chip icon={TrendingUp} label="Estratégia comercial" color="bg-[#1f9d45]" className="right-5 top-12 lg:top-14" />
+    <Chip icon={Handshake} label="Representação comercial" color="bg-[#8e3fd1]" className="bottom-16 right-6 lg:bottom-20" />
     <Chip icon={Store} label="Livrarias e marketplaces" color="bg-[#e8335a]" className="bottom-5 left-6" />
   </div>
 );

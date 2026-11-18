@@ -6,8 +6,8 @@ import logo from "@/assets/logo-header.png";
 const NAV = [
   { to: "/servicos", label: "Serviços" },
   { to: "/projetos-editoriais", label: "Projetos editoriais" },
-  { to: "/amazon-ads-para-livros", label: "Amazon Ads" },
-  { to: "/conversao-de-livros-em-ebook", label: "E-books" },
+  { to: "/consultoria-comercial-para-editoras", label: "Para editoras" },
+  { to: "/comercializacao-de-livros", label: "Vender meu livro" },
   { to: "/conteudos", label: "Conteúdos" },
   { to: "/sobre", label: "Sobre" },
 ];

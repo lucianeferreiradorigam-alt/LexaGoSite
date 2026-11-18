@@ -50,7 +50,7 @@ const About = () => (
           <p className="mt-4 text-lg leading-relaxed text-foreground/85">
             Também atendemos quem precisa de apenas uma dessas etapas. Uma editora pode contratar somente a operação
             comercial; uma pessoa autora pode contratar o desenvolvimento do livro; um catálogo já publicado pode precisar
-            de Amazon Ads ou de uma estratégia de distribuição.
+            apenas de uma estratégia de distribuição.
           </p>
         </div>
         <div>
@@ -61,8 +61,6 @@ const About = () => (
               "Desenvolvimento e produção de livros.",
               "Planejamento e gestão comercial.",
               "Operação de canais físicos e digitais.",
-              "Amazon Ads: publicidade para livros na Amazon.",
-              "Conversão de arquivos em e-books e expansão de catálogos em e-books e audiobooks.",
               "Análise de dados e identificação de oportunidades.",
             ]}
           />
