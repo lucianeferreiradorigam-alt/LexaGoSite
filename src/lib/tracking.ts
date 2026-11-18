@@ -34,11 +34,11 @@ export type Attribution = Partial<Record<(typeof ATTR_PARAMS)[number], string>> 
 export const TRACKING_IDS = {
   // ID público do GA4 da LEXA Go. VITE_GA4_ID na Vercel substitui, se necessário.
   ga4: (import.meta.env.VITE_GA4_ID as string | undefined) || "G-943RQFF132",
-  // Google Ads (811-562-7607) está vinculado à mesma tag do Google (G-943RQFF132).
-  // Preencha VITE_GOOGLE_ADS_ID (AW-...) apenas se for usar conversões diretas do Ads.
-  googleAds: import.meta.env.VITE_GOOGLE_ADS_ID as string | undefined,
-  googleAdsLeadLabel: import.meta.env.VITE_GOOGLE_ADS_LEAD_LABEL as string | undefined,
-  googleAdsContactLabel: import.meta.env.VITE_GOOGLE_ADS_CONTACT_LABEL as string | undefined,
+  // Google Ads (conta 811-562-7607): ID e rótulos das conversões são públicos (aparecem na página).
+  // As variáveis VITE_GOOGLE_ADS_* na Vercel substituem estes valores, se necessário.
+  googleAds: (import.meta.env.VITE_GOOGLE_ADS_ID as string | undefined) || "AW-18581330039",
+  googleAdsLeadLabel: (import.meta.env.VITE_GOOGLE_ADS_LEAD_LABEL as string | undefined) || "-QHOCMOEt7odEPewopxF",
+  googleAdsContactLabel: (import.meta.env.VITE_GOOGLE_ADS_CONTACT_LABEL as string | undefined) || "8VV4CMaEt7odEPewopxF",
   // ID público do Meta Pixel da LEXA Go. VITE_META_PIXEL_ID na Vercel substitui, se necessário.
   metaPixel: (import.meta.env.VITE_META_PIXEL_ID as string | undefined) || "2542404786282497",
 };
