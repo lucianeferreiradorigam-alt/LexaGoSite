@@ -1,0 +1,15 @@
+# LEXA Go
+
+> Consultoria para o mercado editorial brasileiro que conecta desenvolvimento de livros, estratégia comercial, canais de venda e publicidade na Amazon (Amazon Ads). Atende editoras, autores e empresas. Liderada por Luciane Dorigam e Joyce Fabris, sócias com mais de 20 anos de experiência no mercado editorial e livreiro.
+
+## Serviços
+- [Projetos editoriais e ghostwriting](https://www.lexagobr.com/projetos-editoriais): da ideia ao mercado, em cinco etapas contratadas juntas ou por módulos.
+- [Amazon Ads: publicidade para livros na Amazon](https://www.lexagobr.com/amazon-ads-para-livros): gestão de campanhas para editoras e autores.
+- [Conversão de livros em e-book](https://www.lexagobr.com/conversao-de-livros-em-ebook): Word, PDF e arquivos de diagramação para EPUB, layout fluido ou fixo. Mais de 2.000 e-books produzidos para o catálogo do CEDET.
+- [Consultoria comercial para editoras](https://www.lexagobr.com/consultoria-comercial-para-editoras): diagnóstico, estratégia por título e canal, marketplaces, metadados e dados.
+- [Representação comercial de livros](https://www.lexagobr.com/representacao-comercial-de-livros): canais, compradores, negociação e acompanhamento. Não inclui agenciamento literário.
+- [Comercialização de livros](https://www.lexagobr.com/comercializacao-de-livros): para livros já publicados.
+
+## Contato
+- [Contato](https://www.lexagobr.com/contato)
+- E-mail: luciane@lexagobr.com

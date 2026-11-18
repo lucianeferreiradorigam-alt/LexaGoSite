@@ -61,8 +61,8 @@ export default {
         dark: "hsl(var(--surface-dark))",
       },
       fontFamily: {
-        sans: ["Verdana", "Geneva", "Tahoma", "sans-serif"],
-        serif: ["Verdana", "Geneva", "Tahoma", "sans-serif"],
+        sans: ['"Inter Variable"', "-apple-system", "BlinkMacSystemFont", "Segoe UI", "system-ui", "sans-serif"],
+        serif: ['"Inter Variable"', "-apple-system", "BlinkMacSystemFont", "Segoe UI", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -85,5 +85,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
