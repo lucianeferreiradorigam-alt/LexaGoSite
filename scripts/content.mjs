@@ -14,14 +14,10 @@ export const CONTENT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.u
 export const CATEGORY_SLUGS = [
   "escrever-e-produzir-um-livro",
   "vender-e-distribuir-livros",
-  "amazon-e-publicidade",
   "gestao-comercial-para-editoras",
-  "ebooks-e-audiobooks",
 ];
 export const SERVICE_KEYS = [
   "projetos-editoriais",
-  "amazon-ads",
-  "ebooks",
   "consultoria-comercial",
   "representacao-comercial",
   "comercializacao",

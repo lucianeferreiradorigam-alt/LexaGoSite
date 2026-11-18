@@ -28,8 +28,6 @@ export type Section =
 
 export type ServiceKey =
   | "projetos-editoriais"
-  | "amazon-ads"
-  | "ebooks"
   | "consultoria-comercial"
   | "representacao-comercial"
   | "comercializacao";
@@ -40,8 +38,6 @@ export const FORM_SERVICES: { value: ServiceKey | "outro"; label: string }[] = [
   { value: "comercializacao", label: "Vender um livro já publicado" },
   { value: "consultoria-comercial", label: "Consultoria comercial para editora" },
   { value: "representacao-comercial", label: "Representação comercial de livros" },
-  { value: "amazon-ads", label: "Amazon Ads: anunciar livros na Amazon" },
-  { value: "ebooks", label: "Converter livro em e-book" },
   { value: "outro", label: "Outro assunto" },
 ];
 
@@ -173,7 +169,6 @@ export const SERVICES: Record<ServiceKey, Service> = {
               "Definição dos canais prioritários.",
               "Planejamento de lançamento.",
               "Organização de materiais comerciais.",
-              "Avaliação de oportunidades para e-book e audiobook.",
             ],
           },
           {
@@ -189,7 +184,6 @@ export const SERVICES: Record<ServiceKey, Service> = {
               "Relacionamento com distribuidores e livrarias.",
               "Acompanhamento de pedidos, estoque e abastecimento.",
               "Gestão de condições comerciais e ações promocionais.",
-              "Campanhas de Amazon Ads.",
               "Relatórios de desempenho e recomendações de melhoria.",
             ],
           },
@@ -265,7 +259,7 @@ export const SERVICES: Record<ServiceKey, Service> = {
     ],
     cta: "Quero desenvolver meu livro",
     whatsappMessage: "Olá! Quero conversar sobre o desenvolvimento do meu livro.",
-    related: ["comercializacao", "ebooks", "amazon-ads"],
+    related: ["comercializacao", "consultoria-comercial", "representacao-comercial"],
     landing: {
       path: "/lp/desenvolvimento-de-livros",
       seoTitle: "Escreva e publique seu livro com apoio profissional | LEXA Go",
@@ -276,221 +270,6 @@ export const SERVICES: Record<ServiceKey, Service> = {
         "Ghostwriting a partir das suas ideias, entrevistas e materiais.",
         "Edição, revisão, projeto gráfico e preparação para impressão.",
         "Planejamento comercial para levar o livro aos canais de venda.",
-      ],
-    },
-  },
-
-  "amazon-ads": {
-    key: "amazon-ads",
-    path: "/amazon-ads-para-livros",
-    name: "Amazon Ads: publicidade para livros na Amazon",
-    shortName: "Amazon Ads",
-    seoTitle: "Amazon Ads para livros: anúncios e gestão de campanhas na Amazon | LEXA Go",
-    seoDescription:
-      "Gestão de Amazon Ads para editoras e autores: diagnóstico, seleção de títulos, palavras-chave, campanhas, otimização e relatórios para divulgar livros na Amazon.",
-    eyebrow: "Publicidade para livros",
-    h1: "Amazon Ads: publicidade para livros na Amazon",
-    lead:
-      "Coloque seus livros diante de leitores que estão buscando o que ler. Planejamos, gerenciamos e acompanhamos campanhas dentro da Amazon, com decisões orientadas pelos objetivos do catálogo, pelos dados disponíveis e pela viabilidade comercial de cada título.",
-    needs: [
-      "Como divulgar meu livro na Amazon?",
-      "Quero anunciar os livros da minha editora.",
-      "Já anuncio, mas não sei se o investimento está funcionando.",
-    ],
-    audience: [
-      {
-        title: "Editoras",
-        text: "Que querem ampliar a visibilidade do catálogo na Amazon e trabalhar as vendas dos títulos com prioridade comercial.",
-      },
-      {
-        title: "Autores",
-        text: "Com livros à venda na Amazon que desejam divulgar a obra para leitores interessados no tema.",
-      },
-    ],
-    sections: [
-      {
-        kind: "list",
-        id: "entregas",
-        title: "O que faz parte da gestão de Amazon Ads",
-        items: [
-          "Diagnóstico dos títulos e da conta.",
-          "Definição de objetivos e orçamento.",
-          "Seleção de livros para anunciar.",
-          "Pesquisa de palavras-chave e oportunidades de segmentação.",
-          "Estruturação de campanhas nos formatos disponíveis para a conta.",
-          "Acompanhamento de investimento, lances e desempenho.",
-          "Otimização de campanhas e termos de busca.",
-          "Análise de vendas atribuídas e indicadores de eficiência.",
-          "Relatórios com interpretação dos resultados e próximos passos.",
-          "Recomendações sobre páginas dos livros, preço, disponibilidade e metadados.",
-        ],
-      },
-      {
-        kind: "list",
-        id: "diferenciais",
-        title: "Por que a gestão com a LEXA Go é diferente",
-        items: [
-          "Conhecimento do mercado editorial.",
-          "Visão conjunta de publicidade, catálogo e operação comercial.",
-          "Escolha dos títulos considerando seus objetivos e condições de venda.",
-          "Acompanhamento para orientar ajustes no investimento.",
-        ],
-      },
-      {
-        kind: "text",
-        id: "como-funciona",
-        title: "Como funciona",
-        paragraphs: [
-          "Começamos pelo diagnóstico da conta e dos títulos. Em seguida, definimos objetivos, orçamento e quais livros anunciar. As campanhas são estruturadas e acompanhadas de perto, com ajustes de lances, termos e investimento ao longo do tempo.",
-          "Você recebe relatórios que explicam o que aconteceu e quais são os próximos passos, incluindo recomendações sobre a página do livro, preço e disponibilidade, que também influenciam o desempenho dos anúncios.",
-        ],
-      },
-    ],
-    notes: [
-      "A verba de mídia, paga diretamente à Amazon, é separada da remuneração pela gestão.",
-      "Os recursos disponíveis dependem da elegibilidade e das condições da conta.",
-      "Os resultados variam conforme demanda, preço, página do produto, concorrência e disponibilidade.",
-    ],
-    faq: [
-      {
-        q: "Como funciona a gestão de Amazon Ads?",
-        a: "Analisamos a conta e os títulos, definimos objetivos e orçamento, estruturamos as campanhas e acompanhamos o desempenho com ajustes contínuos e relatórios.",
-      },
-      {
-        q: "O investimento em anúncios está incluído na gestão?",
-        a: "Não. A verba de mídia é paga diretamente à Amazon e é separada da remuneração pelo trabalho de gestão.",
-      },
-      {
-        q: "Autores independentes podem contratar?",
-        a: "Sim, desde que o livro esteja à venda na Amazon e a conta tenha acesso aos recursos de anúncio. Avaliamos cada caso no diagnóstico.",
-      },
-      {
-        q: "Vocês garantem aumento de vendas?",
-        a: "Não. Os resultados dependem de fatores como demanda, preço, página do produto, concorrência e disponibilidade. Nosso trabalho é usar o investimento com critério e mostrar com clareza o que os dados indicam.",
-      },
-      {
-        q: "Qual é o orçamento mínimo?",
-        a: "O orçamento é definido com você conforme os objetivos, o número de títulos e a fase do catálogo. Conversamos sobre isso no diagnóstico.",
-      },
-    ],
-    cta: "Quero anunciar meus livros",
-    whatsappMessage: "Olá! Quero conversar sobre Amazon Ads para os meus livros.",
-    related: ["comercializacao", "consultoria-comercial", "ebooks"],
-    landing: {
-      path: "/lp/amazon-ads",
-      seoTitle: "Gestão de Amazon Ads para livros | LEXA Go",
-      h1: "Gestão de Amazon Ads para editoras e autores",
-      lead:
-        "Planejamos, gerenciamos e acompanhamos campanhas de anúncios de livros na Amazon, com escolha criteriosa dos títulos e relatórios que explicam os próximos passos.",
-      bullets: [
-        "Diagnóstico da conta e seleção dos títulos para anunciar.",
-        "Palavras-chave, campanhas, lances e otimização contínua.",
-        "Relatórios com interpretação dos resultados.",
-      ],
-    },
-  },
-
-  ebooks: {
-    key: "ebooks",
-    path: "/conversao-de-livros-em-ebook",
-    name: "Conversão de arquivos em e-books",
-    shortName: "Conversão em e-book",
-    seoTitle: "Conversão de livros em e-book: Word, PDF e InDesign para EPUB | LEXA Go",
-    seoDescription:
-      "Converta seu livro em e-book EPUB pronto para publicação: layout fluido ou fixo, sumário navegável, imagens, notas, metadados e testes de leitura. Para autores e editoras.",
-    eyebrow: "Produção de e-books",
-    h1: "Transforme seu arquivo em um e-book pronto para publicação",
-    lead:
-      "A LEXA Go converte originais e arquivos de livros em e-books, com atenção à organização do conteúdo, à leitura em diferentes dispositivos e aos requisitos dos canais de distribuição.",
-    needs: [
-      "Quero converter meu livro em e-book.",
-      "Tenho o livro em Word ou PDF. Como faço um EPUB?",
-      "Minha editora quer levar o catálogo para o digital.",
-    ],
-    audience: [
-      {
-        title: "Autores",
-        text: "Com o livro em Word, PDF ou arquivo de diagramação que desejam publicar também em formato digital.",
-      },
-      {
-        title: "Editoras",
-        text: "Que querem converter títulos do catálogo e preparar os arquivos para os canais de e-book.",
-      },
-    ],
-    sections: [
-      {
-        kind: "list",
-        id: "entregas",
-        title: "O que pode fazer parte da conversão",
-        items: [
-          "Avaliação dos arquivos de origem, como Word, PDF e arquivos de diagramação.",
-          "Conversão para EPUB.",
-          "Definição entre layout fluido e fixo, conforme o conteúdo e os canais de destino.",
-          "Adaptação de imagens, tabelas, notas e demais elementos.",
-          "Organização de capítulos, sumário navegável e links.",
-          "Inclusão de capa e metadados.",
-          "Verificação técnica e testes de leitura.",
-          "Orientação ou apoio para distribuição e comercialização, conforme a contratação.",
-        ],
-      },
-      {
-        kind: "compare",
-        id: "layout",
-        title: "Layout fluido ou layout fixo?",
-        intro: "A escolha depende do tipo de livro e dos canais em que ele será vendido.",
-        columns: [
-          {
-            title: "Layout fluido",
-            text: "O texto se adapta à tela e permite ajustes de tamanho de fonte. É o formato mais comum para livros de texto corrido.",
-          },
-          {
-            title: "Layout fixo",
-            text: "Preserva a composição das páginas. Pode ser indicado para obras em que a organização visual é essencial, como livros ilustrados, conforme a compatibilidade dos canais.",
-          },
-        ],
-      },
-      {
-        kind: "text",
-        id: "conversao-x-exportacao",
-        title: "Conversão não é apenas exportar o arquivo",
-        paragraphs: [
-          "Exportar um PDF ou um documento de Word para EPUB costuma gerar quebras estranhas, sumário sem links, imagens desproporcionais e notas fora do lugar.",
-          "Na conversão, o conteúdo é reorganizado para o formato digital: capítulos, hierarquia de títulos, notas, imagens e links são tratados um a um e testados em leitura. O objetivo é entregar uma experiência adequada ao conteúdo.",
-        ],
-      },
-    ],
-    faq: [
-      {
-        q: "Quais arquivos posso enviar?",
-        a: "Word, PDF e arquivos de diagramação, como InDesign. Avaliamos o material antes de definir o escopo, porque a qualidade do arquivo de origem influencia o trabalho.",
-      },
-      {
-        q: "Vocês publicam o e-book nas lojas?",
-        a: "Conforme a contratação, podemos orientar ou apoiar a distribuição e a comercialização do e-book nos canais definidos.",
-      },
-      {
-        q: "Vocês trabalham com audiobooks?",
-        a: "Sim. Avaliamos oportunidades de audiobook para catálogos e coordenamos a produção com parceiros, conforme o projeto.",
-      },
-      {
-        q: "Quanto tempo leva?",
-        a: "Depende do tamanho do livro, da complexidade dos elementos e do formato escolhido. O prazo é informado após a avaliação dos arquivos.",
-      },
-    ],
-    cta: "Quero converter meu livro em e-book",
-    whatsappMessage: "Olá! Quero converter meu livro em e-book.",
-    proof: { numero: "+2.000", texto: "e-books produzidos pela LEXA Go para o catálogo do CEDET." },
-    related: ["comercializacao", "projetos-editoriais", "amazon-ads"],
-    landing: {
-      path: "/lp/conversao-de-ebooks",
-      seoTitle: "Converta seu livro em e-book EPUB | LEXA Go",
-      h1: "Transforme seu arquivo em um e-book pronto para publicação",
-      lead:
-        "Convertemos Word, PDF e arquivos de diagramação em EPUB, com sumário navegável, imagens e notas adaptadas, metadados e testes de leitura.",
-      bullets: [
-        "Layout fluido ou fixo, conforme o livro e os canais.",
-        "Capítulos, links, imagens, tabelas e notas tratados um a um.",
-        "Apoio para distribuição, conforme a contratação.",
       ],
     },
   },
@@ -600,7 +379,7 @@ export const SERVICES: Record<ServiceKey, Service> = {
     ],
     cta: "Quero ampliar as vendas da minha editora",
     whatsappMessage: "Olá! Quero conversar sobre consultoria comercial para minha editora.",
-    related: ["representacao-comercial", "amazon-ads", "comercializacao"],
+    related: ["representacao-comercial", "comercializacao", "projetos-editoriais"],
     landing: {
       path: "/lp/consultoria-e-representacao-comercial",
       seoTitle: "Consultoria e representação comercial para editoras | LEXA Go",
@@ -683,7 +462,7 @@ export const SERVICES: Record<ServiceKey, Service> = {
     ],
     cta: "Quero falar sobre representação comercial",
     whatsappMessage: "Olá! Quero conversar sobre representação comercial para minha editora.",
-    related: ["consultoria-comercial", "comercializacao", "amazon-ads"],
+    related: ["consultoria-comercial", "comercializacao", "projetos-editoriais"],
     landing: {
       path: "/lp/consultoria-e-representacao-comercial",
       seoTitle: "Consultoria e representação comercial para editoras | LEXA Go",
@@ -732,7 +511,6 @@ export const SERVICES: Record<ServiceKey, Service> = {
           "Cadastro e acompanhamento do título nos canais definidos.",
           "Operação na Amazon e no Mercado Livre, conforme o caso.",
           "Relacionamento com distribuidores e livrarias.",
-          "Campanhas de Amazon Ads.",
           "Acompanhamento de pedidos, estoque e relatórios de desempenho.",
         ],
       },
@@ -757,12 +535,12 @@ export const SERVICES: Record<ServiceKey, Service> = {
       },
       {
         q: "Meu livro já está na Amazon. Vocês podem ajudar?",
-        a: "Sim. Revisamos página, metadados, preço e disponibilidade e avaliamos campanhas de Amazon Ads.",
+        a: "Sim. Revisamos página, metadados, preço e disponibilidade do livro na Amazon e acompanhamos a operação de vendas.",
       },
     ],
     cta: "Quero vender meu livro",
     whatsappMessage: "Olá! Tenho um livro publicado e quero conversar sobre a comercialização.",
-    related: ["amazon-ads", "ebooks", "consultoria-comercial"],
+    related: ["consultoria-comercial", "representacao-comercial", "projetos-editoriais"],
     landing: {
       path: "/lp/comercializacao-de-livros",
       seoTitle: "Venda seu livro nos canais certos | LEXA Go",
@@ -780,11 +558,9 @@ export const SERVICES: Record<ServiceKey, Service> = {
 
 export const SERVICE_ORDER: ServiceKey[] = [
   "projetos-editoriais",
-  "amazon-ads",
   "consultoria-comercial",
   "representacao-comercial",
   "comercializacao",
-  "ebooks",
 ];
 
 /** Páginas de campanha (anúncios). Consultoria e representação compartilham uma página. */
@@ -792,25 +568,10 @@ export const LANDINGS: { path: string; services: ServiceKey[] }[] = [
   { path: "/lp/consultoria-e-representacao-comercial", services: ["consultoria-comercial", "representacao-comercial"] },
   { path: "/lp/desenvolvimento-de-livros", services: ["projetos-editoriais"] },
   { path: "/lp/comercializacao-de-livros", services: ["comercializacao"] },
-  { path: "/lp/amazon-ads", services: ["amazon-ads"] },
-  { path: "/lp/conversao-de-ebooks", services: ["ebooks"] },
 ];
 
 /** Outras frentes apresentadas na página de serviços. */
 export const OTHER_FRONTS: { id: string; title: string; text: string; items: string[] }[] = [
-  {
-    id: "ebooks-audiobooks",
-    title: "E-books e audiobooks para catálogos",
-    text: "Para editoras que querem ampliar o catálogo digital.",
-    items: [
-      "Análise do catálogo para identificar oportunidades.",
-      "Priorização de títulos para conversão.",
-      "Coordenação da produção com parceiros.",
-      "Estruturação de distribuição digital.",
-      "Acompanhamento comercial.",
-      "Análise de desempenho e oportunidades de licenciamento.",
-    ],
-  },
   {
     id: "distribuicao-livrarias",
     title: "Distribuição e livrarias",
@@ -829,7 +590,7 @@ export const OTHER_FRONTS: { id: string; title: string; text: string; items: str
 export const GENERAL_FAQ: FaqItem[] = [
   {
     q: "Posso contratar apenas uma etapa?",
-    a: "Sim. Uma editora pode contratar somente a operação comercial, uma pessoa autora pode contratar só o desenvolvimento do livro e um catálogo já publicado pode precisar apenas de Amazon Ads ou de uma estratégia de distribuição.",
+    a: "Sim. Uma editora pode contratar somente a operação comercial, uma pessoa autora pode contratar só o desenvolvimento do livro e um catálogo já publicado pode precisar apenas de uma estratégia de distribuição.",
   },
   {
     q: "A LEXA Go atende autores e editoras?",
@@ -838,14 +599,6 @@ export const GENERAL_FAQ: FaqItem[] = [
   {
     q: "Preciso ter o livro escrito para começar?",
     a: "Não. Você pode chegar com uma ideia. A concepção e, se necessário, o ghostwriting ajudam a transformar seu conhecimento em texto.",
-  },
-  {
-    q: "Vocês trabalham com e-books e audiobooks?",
-    a: "Sim. Convertemos arquivos em e-books e avaliamos oportunidades de audiobook, coordenando a produção com parceiros conforme o projeto.",
-  },
-  {
-    q: "O investimento em anúncios está incluído na gestão de Amazon Ads?",
-    a: "Não. A verba de mídia é paga diretamente à Amazon e é separada da remuneração pela gestão.",
   },
   {
     q: "Como são definidos orçamento e prazo?",

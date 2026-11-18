@@ -18,8 +18,6 @@ type Json = Record<string, unknown>;
 
 const SERVICES = new Set([
   "projetos-editoriais",
-  "amazon-ads",
-  "ebooks",
   "consultoria-comercial",
   "representacao-comercial",
   "comercializacao",

@@ -25,7 +25,7 @@ const LeadForm = ({ service, submitLabel = "Enviar", title, compact }: Props) =>
   const [chosenService, setChosenService] = useState<string>(service ?? "");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // Permite links como /contato?assunto=amazon-ads
+  // Permite links como /contato?assunto=comercializacao
   useEffect(() => {
     if (service) return;
     const q = new URLSearchParams(window.location.search).get("assunto");

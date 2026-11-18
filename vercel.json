@@ -12,23 +12,53 @@
       "permanent": true
     },
     {
-      "source": "/servicos/amazon-ads",
-      "destination": "/amazon-ads-para-livros",
+      "source": "/amazon-ads-para-livros",
+      "destination": "/comercializacao-de-livros",
       "permanent": true
     },
     {
       "source": "/amazon-ads",
-      "destination": "/amazon-ads-para-livros",
+      "destination": "/comercializacao-de-livros",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/amazon-ads",
+      "destination": "/comercializacao-de-livros",
+      "permanent": true
+    },
+    {
+      "source": "/lp/amazon-ads",
+      "destination": "/lp/comercializacao-de-livros",
+      "permanent": true
+    },
+    {
+      "source": "/conversao-de-livros-em-ebook",
+      "destination": "/servicos",
       "permanent": true
     },
     {
       "source": "/ebooks",
-      "destination": "/conversao-de-livros-em-ebook",
+      "destination": "/servicos",
       "permanent": true
     },
     {
       "source": "/e-books",
-      "destination": "/conversao-de-livros-em-ebook",
+      "destination": "/servicos",
+      "permanent": true
+    },
+    {
+      "source": "/lp/conversao-de-ebooks",
+      "destination": "/servicos",
+      "permanent": true
+    },
+    {
+      "source": "/conteudos/amazon-ads-para-livros-antes-de-anunciar",
+      "destination": "/conteudos",
+      "permanent": true
+    },
+    {
+      "source": "/conteudos/layout-fluido-ou-fixo-ebook",
+      "destination": "/conteudos",
       "permanent": true
     },
     {

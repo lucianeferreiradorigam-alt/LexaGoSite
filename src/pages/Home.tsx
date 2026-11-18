@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Feather, Handshake, LayoutGrid, Megaphone, PenLine, Store, TabletSmartphone, TrendingUp, type LucideIcon } from "lucide-react";
+import { ArrowRight, Feather, Handshake, LayoutGrid, PenLine, Store, TrendingUp, type LucideIcon } from "lucide-react";
 import { IconTile, SERVICE_ICONS, SERVICE_TONES, type Tone } from "@/layout/ServiceIcon";
 import HeroVisual from "@/layout/HeroVisual";
 import lucianeImg from "@/assets/luciane.webp";
@@ -15,10 +15,8 @@ const PATHS: { need: string; hint: string; to: string; icon: LucideIcon; tone: T
   { need: "Quero escrever um livro", hint: "Da ideia ou do original ao livro pronto.", to: SERVICES["projetos-editoriais"].path, icon: PenLine, tone: "indigo" },
   { need: "Preciso de alguém para escrever meu livro", hint: "Ghostwriting com a sua voz.", to: `${SERVICES["projetos-editoriais"].path}#ghostwriting`, icon: Feather, tone: "blue" },
   { need: "Quero vender meu livro", hint: "Canais, preço e operação de vendas.", to: SERVICES.comercializacao.path, icon: Store, tone: "pink" },
-  { need: "Quero anunciar na Amazon", hint: "Gestão de Amazon Ads para livros.", to: SERVICES["amazon-ads"].path, icon: Megaphone, tone: "orange" },
   { need: "Quero ampliar as vendas da minha editora", hint: "Consultoria e gestão comercial.", to: SERVICES["consultoria-comercial"].path, icon: TrendingUp, tone: "green" },
   { need: "Procuro representação comercial", hint: "Canais, compradores e negociação.", to: SERVICES["representacao-comercial"].path, icon: Handshake, tone: "purple" },
-  { need: "Quero converter meu livro em e-book", hint: "Word, PDF ou InDesign para EPUB.", to: SERVICES.ebooks.path, icon: TabletSmartphone, tone: "teal" },
   { need: "Ver todos os serviços", hint: "Editoras, autores e empresas.", to: "/servicos", icon: LayoutGrid, tone: "blue" },
 ];
 
@@ -38,8 +36,6 @@ const OTHER = [
 const Home = () => {
   const editorial = SERVICES["projetos-editoriais"];
   const steps = editorial.sections.find((s) => s.kind === "steps");
-  const ads = SERVICES["amazon-ads"];
-  const ebooks = SERVICES.ebooks;
 
   return (
     <>
@@ -73,7 +69,7 @@ const Home = () => {
         <Container>
           <h2 id="caminhos" className="text-2xl md:text-3xl">Como podemos ajudar?</h2>
           <p className="mt-2 text-muted-foreground">Escolha a frase que mais parece com a sua.</p>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {PATHS.map((p) => (
               <li key={p.need}>
                 <Link
@@ -128,69 +124,6 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* 4. Amazon Ads */}
-      <section aria-labelledby="amazon-ads" className="bg-dark py-16 text-[hsl(var(--text-on-dark))] md:py-24">
-        <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <Eyebrow className="!text-[hsl(var(--accent-light))]">Amazon Ads</Eyebrow>
-            <h2 id="amazon-ads" className="text-3xl text-white md:text-5xl">Coloque seus livros diante de leitores que estão buscando o que ler</h2>
-            <p className="mt-5 text-lg leading-relaxed opacity-85">
-              Amazon Ads: publicidade para livros na Amazon. Planejamos, gerenciamos e acompanhamos campanhas para editoras
-              e autores que querem divulgar seus livros, ampliar a visibilidade e trabalhar as vendas dentro da plataforma.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to={ads.path} className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
-                Quero anunciar meus livros <ArrowRight className="h-4 w-4" aria-hidden />
-              </Link>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-white/15 p-6 md:p-8">
-            <p className="text-sm font-semibold uppercase tracking-wider opacity-70">Na gestão de Amazon Ads</p>
-            <div className="mt-4 [&_svg]:text-[hsl(var(--accent-light))]">
-              <CheckList
-                items={[
-                  "Diagnóstico dos títulos e da conta.",
-                  "Seleção de livros e pesquisa de palavras-chave.",
-                  "Campanhas, lances e otimização contínua.",
-                  "Relatórios com interpretação e próximos passos.",
-                ]}
-              />
-            </div>
-            <p className="mt-6 text-sm opacity-70">A verba de mídia é separada da remuneração pela gestão. Resultados variam conforme demanda, preço, página do produto, concorrência e disponibilidade.</p>
-          </div>
-        </Container>
-      </section>
-
-      {/* E-books */}
-      <section aria-labelledby="ebooks" className="py-16 md:py-20">
-        <Container className="grid gap-8 rounded-2xl border border-border p-6 md:grid-cols-[1.2fr_1fr] md:p-10">
-          <div>
-            <IconTile icon={SERVICE_ICONS.ebooks} tone="teal" size="lg" />
-            <Eyebrow className="mt-5">Conversão em e-book</Eyebrow>
-            <h2 id="ebooks" className="text-3xl md:text-4xl">{ebooks.h1}</h2>
-            <p className="mt-4 text-lg leading-relaxed text-foreground/80">{ebooks.lead}</p>
-            {ebooks.proof && (
-              <p className="mt-4 flex items-baseline gap-3">
-                <span className="font-serif text-3xl text-accent">{ebooks.proof.numero}</span>
-                <span className="text-foreground/80">{ebooks.proof.texto}</span>
-              </p>
-            )}
-            <Link to={ebooks.path} className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 font-semibold text-accent-foreground hover:bg-accent/90">
-              Quero converter meu livro em e-book <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
-          </div>
-          <CheckList
-            className="self-center"
-            items={[
-              "Word, PDF ou arquivos de diagramação para EPUB.",
-              "Layout fluido ou fixo, conforme o conteúdo.",
-              "Sumário navegável, imagens, tabelas e notas adaptadas.",
-              "Capa, metadados e testes de leitura.",
-            ]}
-          />
-        </Container>
-      </section>
-
       {/* 5. Demais soluções */}
       <section aria-labelledby="solucoes" className="bg-warm py-16 md:py-24">
         <Container>
@@ -215,7 +148,7 @@ const Home = () => {
             })}
           </div>
           <p className="mt-8 text-muted-foreground">
-            Também atuamos com Amazon e marketplaces, metadados, e-books e audiobooks, distribuição e livrarias e dados
+            Também atuamos com Amazon e marketplaces, metadados, distribuição física e digital, livrarias e dados
             comerciais. <Link to="/servicos" className="font-semibold text-accent hover:underline">Ver todos os serviços</Link>.
           </p>
         </Container>

@@ -11,7 +11,7 @@ const ContentIndex = () => (
         <Eyebrow className="mt-8">Conteúdos</Eyebrow>
         <h1 className="max-w-3xl text-4xl leading-[1.08] md:text-5xl">Respostas para quem quer escrever, publicar e vender livros</h1>
         <p className="mt-5 max-w-2xl text-lg text-foreground/80">
-          Artigos práticos sobre produção de livros, canais de venda, Amazon, gestão comercial para editoras e e-books.
+          Artigos práticos sobre produção de livros, canais de venda e gestão comercial para editoras.
         </p>
         <nav aria-label="Categorias" className="mt-8">
           <ul className="flex flex-wrap gap-2">

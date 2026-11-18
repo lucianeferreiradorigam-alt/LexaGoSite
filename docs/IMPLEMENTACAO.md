@@ -76,3 +76,7 @@ Não há promessa de posição nos resultados de busca.
 6. **Revisão dos 4 artigos iniciais** em `content/conteudos/`.
 7. **Search Console:** depois de publicar, enviar `https://www.lexagobr.com/sitemap.xml`.
 8. **Instagram:** ver `docs/conteudos-e-instagram.md`.
+
+## Atualização (18/11/2026): serviços retirados
+
+A pedido da LEXA Go, saíram do site os serviços **Amazon Ads** e **Conversão de e-books**: páginas, landing pages (`/lp/amazon-ads`, `/lp/conversao-de-ebooks`), menu, opções do formulário, seções da página inicial e os dois artigos ligados a eles. Os endereços antigos redirecionam (`vercel.json`): Amazon Ads para `/comercializacao-de-livros` (e a landing para `/lp/comercializacao-de-livros`), e-books para `/servicos`, artigos para `/conteudos`. A operação de vendas na Amazon como canal (marketplace) continua dentro de consultoria e comercialização.
