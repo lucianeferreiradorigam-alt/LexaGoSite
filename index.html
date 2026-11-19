@@ -1,6 +1,26 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <!-- Consentimento LGPD: sem cookies ate o visitante aceitar -->
+    <script>
+      (function () {
+        window.dataLayer = window.dataLayer || [];
+        var c = null;
+        try { c = window.localStorage.getItem("lexa_consent"); } catch (e) {}
+        var v = c === "granted" ? "granted" : "denied";
+        (function () { window.dataLayer.push(arguments); })("consent", "default", {
+          ad_storage: v, analytics_storage: v, ad_user_data: v, ad_personalization: v
+        });
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18581330039"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18581330039');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="4J7nXx7SNQZeUdnSc30_t5o-RiskREutymIZ7tGcKZA" />
