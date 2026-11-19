@@ -3,8 +3,11 @@
  *
  * - Registra a origem da visita (UTM, gclid, fbclid, referência e página de entrada)
  *   no primeiro e no último acesso, para anexar aos formulários.
- * - Dispara eventos no dataLayer. Ferramentas externas (GA4, Google Ads, Meta Pixel)
- *   só são carregadas quando há ID configurado E consentimento do visitante.
+ * - Dispara eventos no dataLayer. A tag do Google Ads (gtag.js, AW-) fica no <head> do
+ *   index.html, em todas as páginas, com Consent Mode: sem cookies até o visitante aceitar.
+ *   GA4 e Meta Pixel só são ativados quando há ID configurado E consentimento do visitante.
+ * - Cliques em qualquer link de WhatsApp (wa.me, api.whatsapp.com, web.whatsapp.com) ou
+ *   e-mail (mailto:) do site são medidos por um único ouvinte global (installContactClickTracking).
  * - "contact_click" (clique em WhatsApp ou e-mail) é diferente de "generate_lead"
  *   (formulário recebido com sucesso pelo servidor). Erros nunca viram conversão.
  */
@@ -147,20 +150,29 @@ export function loadMarketingTags() {
   window.dataLayer = window.dataLayer || [];
 
   if (ga4 || googleAds) {
-    window.gtag = function gtag() {
-      // eslint-disable-next-line prefer-rest-params
-      window.dataLayer.push(arguments);
-    };
-    window.gtag("consent", "default", {
+    const granted = {
       ad_storage: "granted",
       analytics_storage: "granted",
       ad_user_data: "granted",
       ad_personalization: "granted",
-    });
-    window.gtag("js", new Date());
-    if (ga4) window.gtag("config", ga4, { allow_enhanced_conversions: true });
-    if (googleAds) window.gtag("config", googleAds);
-    injectScript(`https://www.googletagmanager.com/gtag/js?id=${ga4 || googleAds}`);
+    };
+    if (window.gtag) {
+      // Caminho normal: a tag do Google já foi carregada no <head> (index.html).
+      // Só libera o consentimento e liga o GA4; não carrega o gtag.js de novo.
+      window.gtag("consent", "update", granted);
+      if (ga4) window.gtag("config", ga4, { allow_enhanced_conversions: true });
+    } else {
+      // Reserva, caso a tag do <head> não exista.
+      window.gtag = function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments);
+      };
+      window.gtag("consent", "default", granted);
+      window.gtag("js", new Date());
+      if (ga4) window.gtag("config", ga4, { allow_enhanced_conversions: true });
+      if (googleAds) window.gtag("config", googleAds);
+      injectScript(`https://www.googletagmanager.com/gtag/js?id=${ga4 || googleAds}`);
+    }
   }
 
   if (metaPixel) {
@@ -207,13 +219,15 @@ export function trackContactClick(method: "whatsapp" | "email", params: EventPar
   const page = typeof window !== "undefined" ? window.location.pathname : undefined;
   const data = { method, page, ...params };
   pushEvent("contact_click", data);
-  if (!tagsLoaded) return;
-  if (window.gtag && TRACKING_IDS.ga4) window.gtag("event", "contact_click", data);
+  // Conversão do Google Ads "Clique no WhatsApp ou e-mail": a tag está em todas as páginas;
+  // sem consentimento, o próprio Consent Mode envia a medição sem cookies.
   if (window.gtag && TRACKING_IDS.googleAds && TRACKING_IDS.googleAdsContactLabel) {
     window.gtag("event", "conversion", {
       send_to: `${TRACKING_IDS.googleAds}/${TRACKING_IDS.googleAdsContactLabel}`,
     });
   }
+  if (!tagsLoaded) return;
+  if (window.gtag && TRACKING_IDS.ga4) window.gtag("event", "contact_click", { ...data, send_to: TRACKING_IDS.ga4 });
   if (window.fbq) window.fbq("track", "Contact", { method });
 }
 
@@ -235,20 +249,56 @@ export function trackLead(params: EventParams & { lead_id?: string }, user?: { e
   const page = typeof window !== "undefined" ? window.location.pathname : undefined;
   const data = { page, ...params };
   pushEvent("generate_lead", data);
-  if (!tagsLoaded) return;
-  if (window.gtag && user?.email) {
+  // E-mail e telefone (conversões otimizadas) só vão ao Google com consentimento.
+  if (tagsLoaded && window.gtag && user?.email) {
     const phone = toE164(user.phone);
     window.gtag("set", "user_data", {
       email: user.email.trim().toLowerCase(),
       ...(phone ? { phone_number: phone } : {}),
     });
   }
-  if (window.gtag && TRACKING_IDS.ga4) window.gtag("event", "generate_lead", data);
+  // Conversão do Google Ads "Formulário do site (lead)": só é chamada após resposta de sucesso.
   if (window.gtag && TRACKING_IDS.googleAds && TRACKING_IDS.googleAdsLeadLabel) {
     window.gtag("event", "conversion", {
       send_to: `${TRACKING_IDS.googleAds}/${TRACKING_IDS.googleAdsLeadLabel}`,
       transaction_id: params.lead_id,
     });
   }
+  if (!tagsLoaded) return;
+  if (window.gtag && TRACKING_IDS.ga4) window.gtag("event", "generate_lead", { ...data, send_to: TRACKING_IDS.ga4 });
   if (window.fbq) window.fbq("track", "Lead", { content_category: params.service }, { eventID: params.lead_id });
+}
+
+/* ---------------- Cliques em WhatsApp e e-mail (site inteiro) ---------------- */
+
+const WHATSAPP_RE = /^https?:\/\/(?:[\w-]+\.)*(?:wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)(?:[/?#:]|$)/i;
+
+/** Identifica se um link é de WhatsApp ou de e-mail. */
+export function contactMethodForHref(href: string | null | undefined): "whatsapp" | "email" | null {
+  const h = (href || "").trim();
+  if (/^mailto:/i.test(h)) return "email";
+  if (WHATSAPP_RE.test(h)) return "whatsapp";
+  return null;
+}
+
+let clickTrackingInstalled = false;
+
+/**
+ * Um único ouvinte no documento (fase de captura, antes de o link abrir) mede todo clique
+ * em link de WhatsApp ou e-mail, inclusive rodapé, botões e links dentro dos conteúdos.
+ */
+export function installContactClickTracking() {
+  if (typeof document === "undefined" || clickTrackingInstalled) return;
+  clickTrackingInstalled = true;
+  const handler = (e: MouseEvent) => {
+    if (e.type === "auxclick" && e.button !== 1) return;
+    const target = e.target as Element | null;
+    const link = target?.closest?.("a[href]") as HTMLAnchorElement | null;
+    if (!link) return;
+    const method = contactMethodForHref(link.getAttribute("href"));
+    if (!method) return;
+    trackContactClick(method, link.dataset.service ? { service: link.dataset.service } : {});
+  };
+  document.addEventListener("click", handler, true);
+  document.addEventListener("auxclick", handler, true);
 }

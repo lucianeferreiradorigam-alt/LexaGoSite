@@ -1,6 +1,5 @@
 import { MessageCircle, Mail } from "lucide-react";
 import { CONTACT, whatsappLink } from "@/lib/site";
-import { trackContactClick } from "@/lib/tracking";
 
 type Props = {
   message?: string;
@@ -24,7 +23,7 @@ export const WhatsAppLink = ({ message, service, label = "Falar pelo WhatsApp", 
       target="_blank"
       rel="noopener noreferrer"
       className={`${styles} ${className}`}
-      onClick={() => trackContactClick("whatsapp", { service })}
+      data-service={service}
     >
       <MessageCircle className="h-5 w-5" aria-hidden />
       {label}
@@ -37,7 +36,7 @@ export const EmailLink = ({ email = CONTACT.emailGeneral, service }: { email?: s
   <a
     href={`mailto:${email}`}
     className="inline-flex items-center gap-2 underline-offset-4 hover:text-accent hover:underline"
-    onClick={() => trackContactClick("email", { service })}
+    data-service={service}
   >
     <Mail className="h-4 w-4" aria-hidden />
     {email}

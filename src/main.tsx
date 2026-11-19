@@ -4,6 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "@fontsource-variable/inter";
 import "./index.css";
+import { installContactClickTracking } from "@/lib/tracking";
+
+// Mede cliques em WhatsApp e e-mail em todas as páginas (conversão do Google Ads).
+installContactClickTracking();
 
 const container = document.getElementById("root")!;
 const app = (
